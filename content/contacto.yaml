@@ -1,0 +1,31 @@
+heading: "Contacta con nosotros"
+
+address: "C/ Vizconde de Arlessón, 21, 28018 Madrid"
+
+phones: 
+  - "666 849 365"
+  - "690 639 894"
+
+email: "syxestudio@gmail.com"
+
+whatsapp: "https://api.whatsapp.com/send?phone=34666849365"
+
+hours: "Lunes - Sábado 08:00 - 20:00"
+
+form_fields:
+  - name: "name"
+    label: "Nombre"
+    type: "text"
+    required: true
+  - name: "email"
+    label: "Email"
+    type: "email"
+    required: true
+  - name: "phone"
+    label: "Teléfono"
+    type: "tel"
+    required: false
+  - name: "message"
+    label: "Mensaje"
+    type: "textarea"
+    required: true

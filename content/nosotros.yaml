@@ -1,0 +1,20 @@
+headline: "Conoce a nuestro equipo"
+
+people:
+  - name: "Ximena Garrigues"
+    role: "Creadora audiovisual"
+    bio: "Creadora audiovisual con más de 20 años de experiencia. Sus trabajos han sido expuestos en espacios como Matadero Madrid y publicados en medios como El País Semanal, ELLE, ICON y Harper's Bazaar."
+    img: "/img/11M-48__msi___jpg.jpg"
+  - name: "Sergio Moya"
+    role: "Creador audiovisual"
+    bio: "Creador audiovisual especializado en fotografía y vídeo. Con una amplia trayectoria en el sector, ha desarrollado proyectos para importantes publicaciones y marcas."
+    img: "/img/11M-47__msi___jpg.jpg"
+
+experience:
+  years: "20+"
+  exhibitions: ["Matadero Madrid"]
+  publications: ["El País Semanal", "ELLE", "ICON", "Harper's Bazaar"]
+
+external_link:
+  label: "XIMENA Y SERGIO"
+  href: "https://www.syxestudio.com"

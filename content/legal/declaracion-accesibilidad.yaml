@@ -1,0 +1,17 @@
+headline: "Declaración de Accesibilidad"
+
+sections:
+  - title: "Compromiso de accesibilidad"
+    content: "ARLESSON ESTUDIO SL se compromete a hacer accesible su sitio web de conformidad con el Real Decreto 1112/2018."
+  
+  - title: "Situación de cumplimiento"
+    content: "Este sitio web es parcialmente conforme con el estándar UNE-EN 301549:2022 debido a las excepciones enumeradas a continuación."
+  
+  - title: "Contenido no accesible"
+    content: "Algunas imágenes pueden carecer de texto alternativo descriptivo. Trabajamos continuamente para mejorar la accesibilidad."
+  
+  - title: "Preparación de la declaración"
+    content: "Esta declaración fue preparada el [fecha] y fue revisada por última vez el [fecha]."
+  
+  - title: "Observaciones y contacto"
+    content: "Puede realizar consultas sobre accesibilidad a través de nuestros canales de contacto habituales."

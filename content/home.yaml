@@ -1,0 +1,25 @@
+hero:
+  title: "Tu nuevo estudio en Madrid, Vallecas"
+  subtitle: "Plató audiovisual para foto y vídeo con luz natural controlable"
+  cta:
+    label: "RESERVA"
+    href: "/contacto"
+
+benefits:
+  - "Espacio amplio y adaptable con entrada para vehículos"
+  - "Material de iluminación PROFOTO y fondos pintados"
+  - "Cocina y camerino incluidos"
+  - "Accesible para PMR"
+  - "Placas fotovoltaicas: estudio NET ZERO"
+
+use_cases:
+  - "Shootings de fotografía"
+  - "Rodajes de vídeo"
+  - "Eventos corporativos"
+  - "Alquiler de equipos"
+
+address_block: &address
+  address: "C/ Vizconde de Arlessón, 21, 28018 Madrid"
+  phones: ["666 849 365"]
+  email: "syxestudio@gmail.com"
+  whatsapp: "https://api.whatsapp.com/send?phone=34666849365"

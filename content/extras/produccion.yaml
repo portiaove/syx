@@ -1,0 +1,20 @@
+headline: "Producción audiovisual integral"
+
+blocks:
+  planificacion:
+    title: "Planificación"
+    items: ["Objetivos", "Guion", "Storyboard", "Locaciones", "Timing"]
+  produccion_set:
+    title: "Producción en Set"
+    items: ["Equipo técnico", "Iluminación", "Sonido", "Cámaras", "Decoración", "Maquillaje"]
+  postproduccion:
+    title: "Postproducción"
+    items: ["Edición", "Corrección de color", "Diseño de efectos", "Edición de sonido", "Adaptaciones RRSS/TV"]
+  logistica:
+    title: "Logística"
+    items: ["Casting", "Transporte", "Catering", "Alojamiento"]
+
+benefits:
+  - "Ahorro de tiempo"
+  - "Profesionalismo"
+  - "Flexibilidad y adaptabilidad"
