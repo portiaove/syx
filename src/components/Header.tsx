@@ -1,11 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExtrasOpen, setIsExtrasOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsExtrasOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleExtrasLinkClick = () => {
+    setIsExtrasOpen(false);
+  };
 
   return (
     <header className="bg-white shadow-sm ">
@@ -38,7 +56,7 @@ export default function Header() {
                 CARACTERÍSTICAS
               </Link>
 
-              <div className="relative">
+              <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsExtrasOpen(!isExtrasOpen)}
                   className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium flex items-center"
@@ -63,18 +81,21 @@ export default function Header() {
                       <Link
                         href="/alquiler-de-material"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={handleExtrasLinkClick}
                       >
                         Alquiler de Material
                       </Link>
                       <Link
                         href="/produccion"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={handleExtrasLinkClick}
                       >
                         Producción
                       </Link>
                       <Link
                         href="/fondos-de-fotografia"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={handleExtrasLinkClick}
                       >
                         Fondos de Fotografía
                       </Link>

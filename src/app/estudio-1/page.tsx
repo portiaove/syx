@@ -42,7 +42,7 @@ export default function Estudio1() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {data.features.map((feature, index) => (
                 <div key={index} className="flex items-center">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                   <span className="text-gray-700">{feature}</span>
                 </div>
               ))}
