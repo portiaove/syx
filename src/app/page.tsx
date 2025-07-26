@@ -2,6 +2,7 @@ import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
 import ContactBlock from "@/components/ContactBlock";
 import Image from "next/image";
+import Link from "next/link";
 
 interface HomeData {
   hero: {
@@ -77,39 +78,43 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image
-                src="/img/_SX_5180-1__msi___jpg.jpg"
-                alt="Estudio SYX - Espacio principal"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-xl font-bold mb-2">Espacio principal</h3>
-                <p className="text-sm opacity-90">
-                  Amplio estudio con luz natural controlable
-                </p>
+            <Link href="/estudio-1" className="block">
+              <div className="relative h-96 rounded-lg overflow-hidden border-2 border-transparent hover:border-cta transition-all duration-300">
+                <Image
+                  src="/img/_SX_5180-1__msi___jpg.jpg"
+                  alt="Estudio SYX - Espacio principal"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold mb-2">Espacio principal</h3>
+                  <p className="text-sm opacity-90">
+                    Amplio estudio con luz natural controlable
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image
-                src="/img/_SX_5184-1__msi___jpg.jpg"
-                alt="Estudio SYX - Zona de trabajo"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-xl font-bold mb-2">Zona de trabajo</h3>
-                <p className="text-sm opacity-90">
-                  Equipamiento profesional PROFOTO
-                </p>
+            <Link href="/caracteristicas" className="block">
+              <div className="relative h-96 rounded-lg overflow-hidden border-2 border-transparent hover:border-cta transition-all duration-300">
+                <Image
+                  src="/img/_SX_5184-1__msi___jpg.jpg"
+                  alt="Estudio SYX - Zona de trabajo"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold mb-2">Zona de trabajo</h3>
+                  <p className="text-sm opacity-90">
+                    Equipamiento profesional PROFOTO
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -122,16 +127,27 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.use_cases.map((useCase, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-sm text-center border border-gray-200 hover:border-accent/30 transition-colors"
-              >
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  {useCase}
-                </h3>
-              </div>
-            ))}
+            {data.use_cases.map((useCase, index) => {
+              const getHref = (service: string) => {
+                if (service.includes('fotografía') || service.includes('vídeo') || service.includes('Eventos')) {
+                  return '/produccion';
+                }
+                if (service.includes('Alquiler')) {
+                  return '/alquiler-de-material';
+                }
+                return '/produccion';
+              };
+              
+              return (
+                <Link key={index} href={getHref(useCase)} className="block h-full">
+                  <div className="bg-white p-6 rounded-lg shadow-sm text-center border border-gray-200 hover:border-cta transition-all duration-300 h-full flex items-center justify-center">
+                    <h3 className="text-lg font-semibold text-primary">
+                      {useCase}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
           <div className="text-center mt-12">
             <CTAButton
