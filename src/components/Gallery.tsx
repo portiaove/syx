@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 interface GalleryProps {
   images: string[];
@@ -12,36 +12,36 @@ interface GalleryProps {
 export default function Gallery({ images, alt = "Imagen de galería", className = "" }: GalleryProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (selectedImageIndex !== null) {
       setSelectedImageIndex(selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1);
     }
-  };
+  }, [selectedImageIndex, images.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (selectedImageIndex !== null) {
       setSelectedImageIndex(selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1);
     }
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (selectedImageIndex !== null) {
-      if (e.key === 'ArrowLeft') {
-        goToPrevious();
-      } else if (e.key === 'ArrowRight') {
-        goToNext();
-      } else if (e.key === 'Escape') {
-        setSelectedImageIndex(null);
-      }
-    }
-  };
+  }, [selectedImageIndex, images.length]);
 
   React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex !== null) {
+        if (e.key === 'ArrowLeft') {
+          goToPrevious();
+        } else if (e.key === 'ArrowRight') {
+          goToNext();
+        } else if (e.key === 'Escape') {
+          setSelectedImageIndex(null);
+        }
+      }
+    };
+
     if (selectedImageIndex !== null) {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [selectedImageIndex]);
+  }, [selectedImageIndex, goToPrevious, goToNext]);
 
   return (
     <>
