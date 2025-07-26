@@ -2,6 +2,7 @@ import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
 import ContactBlock from "@/components/ContactBlock";
 import ClickableImage from "@/components/ClickableImage";
+import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface CaracteristicasData {
   location: {
@@ -21,11 +22,7 @@ interface CaracteristicasData {
   };
 }
 
-export const metadata = {
-  title: "Características - SYX Estudio Madrid",
-  description:
-    "322 m² de estudio audiovisual en Vallecas, Madrid. Iluminación PROFOTO, fondos pintados, accesibilidad PMR y energía 100% renovable.",
-};
+export const metadata = generateSEOMetadata(SEOPresets.caracteristicas);
 
 export default function Caracteristicas() {
   const data = getContentData("caracteristicas") as CaracteristicasData;

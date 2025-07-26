@@ -1,6 +1,7 @@
 import { getExtrasContentData } from '@/lib/content';
 import CTAButton from '@/components/CTAButton';
 import ContactBlock from '@/components/ContactBlock';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface ProduccionData {
   headline: string;
@@ -25,10 +26,7 @@ interface ProduccionData {
   benefits: string[];
 }
 
-export const metadata = {
-  title: 'Producción Audiovisual - SYX Estudio Madrid',
-  description: 'Servicio integral de producción audiovisual: planificación, producción en set, postproducción y logística completa.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.produccion);
 
 export default function Produccion() {
   const data = getExtrasContentData('produccion') as ProduccionData;

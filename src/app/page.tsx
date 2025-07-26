@@ -3,6 +3,7 @@ import CTAButton from "@/components/CTAButton";
 import ContactBlock from "@/components/ContactBlock";
 import Image from "next/image";
 import Link from "next/link";
+import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface HomeData {
   hero: {
@@ -16,6 +17,8 @@ interface HomeData {
   benefits: string[];
   use_cases: string[];
 }
+
+export const metadata = generateSEOMetadata(SEOPresets.home);
 
 export default function Home() {
   const data = getContentData("home") as HomeData;

@@ -2,6 +2,7 @@ import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
 import ContactBlock from "@/components/ContactBlock";
 import Image from "next/image";
+import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface NosotrosData {
   headline: string;
@@ -22,11 +23,7 @@ interface NosotrosData {
   };
 }
 
-export const metadata = {
-  title: "Nosotros - SYX Estudio Madrid",
-  description:
-    "Conoce a Ximena Garrigues y Sergio Moya, creadores audiovisuales con más de 20 años de experiencia en fotografía y vídeo.",
-};
+export const metadata = generateSEOMetadata(SEOPresets.nosotros);
 
 export default function Nosotros() {
   const data = getContentData("nosotros") as NosotrosData;

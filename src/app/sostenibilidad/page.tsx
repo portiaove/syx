@@ -1,6 +1,7 @@
 import { getContentData } from '@/lib/content';
 import CTAButton from '@/components/CTAButton';
 import ContactBlock from '@/components/ContactBlock';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface SostenibilidadData {
   headline: string;
@@ -14,10 +15,7 @@ interface SostenibilidadData {
   };
 }
 
-export const metadata = {
-  title: 'Sostenibilidad - SYX Estudio Madrid',
-  description: 'Estudio NET ZERO con energía 100% renovable. Comprometidos con los ODS de la ONU y la reforestación del Amazonas.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.sostenibilidad);
 
 export default function Sostenibilidad() {
   const data = getContentData('sostenibilidad') as SostenibilidadData;

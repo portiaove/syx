@@ -2,6 +2,7 @@ import { getExtrasContentData } from '@/lib/content';
 import Gallery from '@/components/Gallery';
 import CTAButton from '@/components/CTAButton';
 import ContactBlock from '@/components/ContactBlock';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface FondosData {
   headline: string;
@@ -10,10 +11,7 @@ interface FondosData {
   types: string[];
 }
 
-export const metadata = {
-  title: 'Fondos de Fotografía - SYX Estudio Madrid',
-  description: 'Fondos pintados a mano de alta calidad para fotografía. Amplia selección de texturas y colores hasta 5 m de ancho.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.fondos);
 
 export default function FondosFotografia() {
   const data = getExtrasContentData('fondos') as FondosData;

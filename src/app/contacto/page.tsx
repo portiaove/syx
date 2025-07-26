@@ -1,4 +1,5 @@
 import { getContentData } from '@/lib/content';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface ContactoData {
   heading: string;
@@ -15,10 +16,7 @@ interface ContactoData {
   }>;
 }
 
-export const metadata = {
-  title: 'Contacto - SYX Estudio Madrid',
-  description: 'Contacta con SYX Estudio para reservar tu sesión. Teléfono: 666 849 365. C/ Vizconde de Arlessón, 21, Madrid.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.contacto);
 
 export default function Contacto() {
   const data = getContentData('contacto') as ContactoData;

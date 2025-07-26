@@ -1,6 +1,7 @@
 import { getContentData } from '@/lib/content';
 import Gallery from '@/components/Gallery';
 import ContactBlock from '@/components/ContactBlock';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface Estudio1Data {
   summary: string;
@@ -8,10 +9,7 @@ interface Estudio1Data {
   features: string[];
 }
 
-export const metadata = {
-  title: 'Estudio 1 - SYX Estudio Madrid',
-  description: '322 m² con alturas hasta 7 m, luz natural controlable, camerino, cocina y acceso de vehículos. Estudio NET ZERO.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.estudio1);
 
 export default function Estudio1() {
   const data = getContentData('estudio-1') as Estudio1Data;

@@ -1,6 +1,7 @@
 import { getExtrasContentData } from '@/lib/content';
 import CTAButton from '@/components/CTAButton';
 import ContactBlock from '@/components/ContactBlock';
+import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface AlquilerMaterialData {
   headline: string;
@@ -9,10 +10,7 @@ interface AlquilerMaterialData {
   equipment: string[];
 }
 
-export const metadata = {
-  title: 'Alquiler de Material - SYX Estudio Madrid',
-  description: 'Alquiler de equipo de iluminación profesional PROFOTO para fotografía y vídeo. Luces LED, softboxes, trípodes y más.',
-};
+export const metadata = generateSEOMetadata(SEOPresets.alquiler);
 
 export default function AlquilerMaterial() {
   const data = getExtrasContentData('alquiler-material') as AlquilerMaterialData;
@@ -41,7 +39,7 @@ export default function AlquilerMaterial() {
               <ul className="space-y-3">
                 {data.benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                     <span className="text-gray-700">{benefit}</span>
                   </li>
                 ))}
@@ -53,7 +51,7 @@ export default function AlquilerMaterial() {
               <ul className="space-y-4">
                 {data.equipment.map((item, index) => (
                   <li key={index} className="flex items-center p-3 bg-white rounded border">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full mr-3"></div>
+                    <div className="w-3 h-3 bg-accent rounded-full mr-3"></div>
                     <span className="text-gray-700 font-medium">{item}</span>
                   </li>
                 ))}
