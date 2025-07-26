@@ -32,18 +32,6 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
 
   return (
     <header className="bg-white shadow-sm ">
@@ -162,100 +150,64 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-white">
-            <div className="flex flex-col h-full min-h-screen">
-              {/* Header area */}
-              <div className="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8 border-b flex-shrink-0">
-                <Link
-                  href="/"
-                  className="text-2xl font-bold text-primary"
-                  onClick={handleMobileLinkClick}
-                >
-                  SYX ESTUDIO
-                </Link>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 hover:text-primary p-2"
-                >
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Menu content */}
-              <div className="flex flex-col justify-center flex-1 px-4 py-8 space-y-4 overflow-y-auto">
-                {/* <Link
-                  href="/"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  INICIO
-                </Link> */}
-                <Link
-                  href="/estudio-1"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  ESTUDIO 1
-                </Link>
-                <Link
-                  href="/caracteristicas"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  CARACTERÍSTICAS
-                </Link>
-                <Link
-                  href="/alquiler-de-material"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  Alquiler de Material
-                </Link>
-                <Link
-                  href="/produccion"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  Producción
-                </Link>
-                <Link
-                  href="/fondos-de-fotografia"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  Fondos de Fotografía
-                </Link>
-                <Link
-                  href="/nosotros"
-                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
-                  onClick={handleMobileLinkClick}
-                >
-                  NOSOTROS
-                </Link>
-              </div>
-
-              {/* CTA button fixed at bottom */}
-              <div className="px-4 py-6 flex-shrink-0">
-                <Link
-                  href="/contacto"
-                  className="block w-full bg-cta text-primary py-4 text-lg font-bold text-center rounded-lg hover:bg-yellow-600 transition-colors"
-                  onClick={handleMobileLinkClick}
-                >
-                  RESERVA
-                </Link>
-              </div>
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+              <Link
+                href="/"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                INICIO
+              </Link>
+              <Link
+                href="/estudio-1"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                ESTUDIO 1
+              </Link>
+              <Link
+                href="/caracteristicas"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                CARACTERÍSTICAS
+              </Link>
+              <Link
+                href="/alquiler-de-material"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                Alquiler de Material
+              </Link>
+              <Link
+                href="/produccion"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                Producción
+              </Link>
+              <Link
+                href="/fondos-de-fotografia"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                Fondos de Fotografía
+              </Link>
+              <Link
+                href="/nosotros"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                NOSOTROS
+              </Link>
+              <Link
+                href="/contacto"
+                className="block px-3 py-2 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-3 text-center mt-5"
+                onClick={handleMobileLinkClick}
+              >
+                RESERVA
+              </Link>
             </div>
           </div>
         )}
