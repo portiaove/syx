@@ -49,7 +49,12 @@ export default function Contacto() {
                 <h3 className="text-lg font-semibold text-primary mb-2">Teléfonos</h3>
                 {data.phones.map((phone, index) => (
                   <p key={index} className="text-gray-600">
-                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-cta">
+                    <a 
+                      href={`https://api.whatsapp.com/send?phone=34${phone.replace(/\s/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-cta"
+                    >
                       {phone}
                     </a>
                   </p>
