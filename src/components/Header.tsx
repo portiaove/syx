@@ -163,9 +163,9 @@ export default function Header() {
 
         {isMenuOpen && (
           <div className="md:hidden fixed inset-0 z-50 bg-white">
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col h-full min-h-screen">
               {/* Header area */}
-              <div className="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8 border-b">
+              <div className="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8 border-b flex-shrink-0">
                 <Link
                   href="/"
                   className="text-2xl font-bold text-primary"
@@ -194,59 +194,63 @@ export default function Header() {
               </div>
 
               {/* Menu content */}
-              <div className="flex flex-col justify-evenly flex-1 px-2 pt-2 pb-3 sm:px-3 bg-white">
-                <Link
+              <div className="flex flex-col justify-center flex-1 px-4 py-8 space-y-4 overflow-y-auto">
+                {/* <Link
                   href="/"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   INICIO
-                </Link>
+                </Link> */}
                 <Link
                   href="/estudio-1"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   ESTUDIO 1
                 </Link>
                 <Link
                   href="/caracteristicas"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   CARACTERÍSTICAS
                 </Link>
                 <Link
                   href="/alquiler-de-material"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   Alquiler de Material
                 </Link>
                 <Link
                   href="/produccion"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   Producción
                 </Link>
                 <Link
                   href="/fondos-de-fotografia"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   Fondos de Fotografía
                 </Link>
                 <Link
                   href="/nosotros"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                  className="block px-3 py-3 text-lg font-medium text-gray-700 hover:text-primary text-center"
                   onClick={handleMobileLinkClick}
                 >
                   NOSOTROS
                 </Link>
+              </div>
+
+              {/* CTA button fixed at bottom */}
+              <div className="px-4 py-6 flex-shrink-0">
                 <Link
                   href="/contacto"
-                  className="block px-3 py-2 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-3 text-center mt-5"
+                  className="block w-full bg-cta text-primary py-4 text-lg font-bold text-center rounded-lg hover:bg-yellow-600 transition-colors"
                   onClick={handleMobileLinkClick}
                 >
                   RESERVA
