@@ -3,11 +3,34 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
+function useBodyScrollLock(locked: boolean) {
+  useEffect(() => {
+    const { body, documentElement: html } = document;
+    if (locked) {
+      const prevBody = body.style.overflow;
+      const prevHtml = html.style.overflow;
+      body.style.overflow = "hidden";
+      html.style.overflow = "hidden"; // ayuda en iOS
+      return () => {
+        body.style.overflow = prevBody;
+        html.style.overflow = prevHtml;
+      };
+    }
+  }, [locked]);
+}
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExtrasOpen, setIsExtrasOpen] = useState(false);
+
+  // refs para accesibilidad/foco
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useBodyScrollLock(isMenuOpen);
+
+  // Cerrar dropdown "EXTRAS" si clicas fuera (versión escritorio)
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -17,23 +40,15 @@ export default function Header() {
         setIsExtrasOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleExtrasLinkClick = () => {
-    setIsExtrasOpen(false);
-  };
-
-  const handleMobileLinkClick = () => {
-    setIsMenuOpen(false);
-  };
+  const handleExtrasLinkClick = () => setIsExtrasOpen(false);
+  const handleMobileLinkClick = () => setIsMenuOpen(false);
 
   return (
-    <header className="bg-white shadow-sm ">
+    <header className="bg-white shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -42,14 +57,9 @@ export default function Header() {
             </Link>
           </div>
 
+          {/* Navegación desktop */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {/* <Link
-                href="/"
-                className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium"
-              >
-                INICIO
-              </Link> */}
               <Link
                 href="/estudio-1"
                 className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
@@ -65,14 +75,17 @@ export default function Header() {
 
               <div className="relative" ref={dropdownRef}>
                 <button
-                  onClick={() => setIsExtrasOpen(!isExtrasOpen)}
+                  onClick={() => setIsExtrasOpen((v) => !v)}
                   className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium flex items-center cursor-pointer"
+                  aria-haspopup="true"
+                  aria-expanded={isExtrasOpen}
                 >
                   EXTRAS
                   <svg
                     className="ml-1 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 20 20"
+                    aria-hidden="true"
                   >
                     <path
                       fillRule="evenodd"
@@ -126,16 +139,22 @@ export default function Header() {
             </div>
           </div>
 
+          {/* Botón menú móvil */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              ref={menuButtonRef}
+              onClick={() => setIsMenuOpen(true)}
               className="text-gray-700 hover:text-primary p-2"
+              aria-controls="mobile-menu"
+              aria-expanded={isMenuOpen}
+              aria-label="Abrir menú"
             >
               <svg
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -148,61 +167,113 @@ export default function Header() {
           </div>
         </div>
 
+        {/* --- OVERLAY MÓVIL A PANTALLA COMPLETA --- */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+          <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="mobile-menu-title"
+            className="
+              fixed inset-0 z-[9999] bg-white
+              h-[100vh] h-[100svh] h-[100dvh] w-full
+              overflow-y-auto overscroll-contain
+            "
+            // padding con safe areas iOS
+            style={{
+              paddingTop: "max(16px, env(safe-area-inset-top))",
+              paddingRight: "max(16px, env(safe-area-inset-right))",
+              paddingBottom: "max(16px, env(safe-area-inset-bottom))",
+              paddingLeft: "max(16px, env(safe-area-inset-left))",
+            }}
+          >
+            {/* Barra superior dentro del overlay */}
+            <div className="flex items-center justify-between px-4 py-3 border-b">
               <Link
                 href="/"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                id="mobile-menu-title"
+                className="text-lg font-semibold text-gray-900"
+                onClick={handleMobileLinkClick}
+              >
+                SYX ESTUDIO
+              </Link>
+              <button
+                ref={closeButtonRef}
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                aria-label="Cerrar menú"
+              >
+                <svg
+                  className="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Links del menú */}
+            <div className="px-2 pt-2 pb-6 space-y-1">
+              <Link
+                href="/"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 INICIO
               </Link>
               <Link
                 href="/estudio-1"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 ESTUDIO 1
               </Link>
               <Link
                 href="/caracteristicas"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 CARACTERÍSTICAS
               </Link>
               <Link
                 href="/alquiler-de-material"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 Alquiler de Material
               </Link>
               <Link
                 href="/produccion"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 Producción
               </Link>
               <Link
                 href="/fondos-de-fotografia"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 Fondos de Fotografía
               </Link>
               <Link
                 href="/nosotros"
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
                 NOSOTROS
               </Link>
               <Link
                 href="/contacto"
-                className="block px-3 py-2 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-3 text-center mt-5"
+                className="mt-3 block px-3 py-3 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-1 text-center mt-2"
                 onClick={handleMobileLinkClick}
               >
                 RESERVA
