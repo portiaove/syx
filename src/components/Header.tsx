@@ -61,10 +61,10 @@ export default function Header() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                href="/estudio-1"
+                href="/estudio"
                 className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
               >
-                ESTUDIO 1
+                Estudio
               </Link>
               <Link
                 href="/caracteristicas"
@@ -230,11 +230,11 @@ export default function Header() {
                 INICIO
               </Link>
               <Link
-                href="/estudio-1"
+                href="/estudio"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                ESTUDIO 1
+                Estudio
               </Link>
               <Link
                 href="/caracteristicas"

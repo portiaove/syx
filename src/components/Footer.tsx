@@ -24,10 +24,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/estudio-1"
+                  href="/estudio"
                   className="text-gray-300 hover:text-white"
                 >
-                  Estudio 1
+                  Estudio
                 </Link>
               </li>
               <li>

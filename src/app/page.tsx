@@ -81,7 +81,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Link href="/estudio-1" className="block">
+            <Link href="/estudio" className="block">
               <div className="relative h-96 rounded-lg overflow-hidden border-2 border-transparent hover:border-cta transition-all duration-300">
                 <Image
                   src="/img/_SX_5180-1__msi___jpg.jpg"
@@ -132,17 +132,25 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.use_cases.map((useCase, index) => {
               const getHref = (service: string) => {
-                if (service.includes('fotografía') || service.includes('vídeo') || service.includes('Eventos')) {
-                  return '/produccion';
+                if (
+                  service.includes("fotografía") ||
+                  service.includes("vídeo") ||
+                  service.includes("Eventos")
+                ) {
+                  return "/produccion";
                 }
-                if (service.includes('Alquiler')) {
-                  return '/alquiler-de-material';
+                if (service.includes("Alquiler")) {
+                  return "/alquiler-de-material";
                 }
-                return '/produccion';
+                return "/produccion";
               };
-              
+
               return (
-                <Link key={index} href={getHref(useCase)} className="block h-full">
+                <Link
+                  key={index}
+                  href={getHref(useCase)}
+                  className="block h-full"
+                >
                   <div className="bg-white p-6 rounded-lg shadow-sm text-center border border-gray-200 hover:border-cta transition-all duration-300 h-full flex items-center justify-center">
                     <h3 className="text-lg font-semibold text-primary">
                       {useCase}
@@ -154,8 +162,8 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <CTAButton
-              href="/estudio-1"
-              label="Conoce nuestro Estudio 1"
+              href="/estudio"
+              label="Conoce nuestro Estudio"
               variant="secondary"
             />
           </div>

@@ -59,7 +59,7 @@ export default function Caracteristicas() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Estudio 1:</span>
+                  <span className="text-gray-600">Estudio:</span>
                   <span className="font-semibold">
                     {data.space.studio1_m2} m²
                   </span>
@@ -141,7 +141,7 @@ export default function Caracteristicas() {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Estudio 1:</span>
+                    <span className="text-gray-600">Estudio:</span>
                     <span className="font-semibold">
                       {data.space.studio1_m2} m²
                     </span>
