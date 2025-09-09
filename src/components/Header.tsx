@@ -28,6 +28,10 @@ export default function Header() {
     setIsExtrasOpen(false);
   };
 
+  const handleMobileLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="bg-white shadow-sm ">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,48 +154,56 @@ export default function Header() {
               <Link
                 href="/"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 INICIO
               </Link>
               <Link
                 href="/estudio-1"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 ESTUDIO 1
               </Link>
               <Link
                 href="/caracteristicas"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 CARACTERÍSTICAS
               </Link>
               <Link
                 href="/alquiler-de-material"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 Alquiler de Material
               </Link>
               <Link
                 href="/produccion"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 Producción
               </Link>
               <Link
                 href="/fondos-de-fotografia"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 Fondos de Fotografía
               </Link>
               <Link
                 href="/nosotros"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
               >
                 NOSOTROS
               </Link>
               <Link
                 href="/contacto"
                 className="block px-3 py-2 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-3 text-center mt-5"
+                onClick={handleMobileLinkClick}
               >
                 RESERVA
               </Link>
