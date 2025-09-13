@@ -64,7 +64,7 @@ export default function Header() {
                 href="/estudio"
                 className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
               >
-                Estudio
+                ESTUDIO
               </Link>
               <Link
                 href="/caracteristicas"
@@ -124,6 +124,12 @@ export default function Header() {
                 )}
               </div>
 
+              <Link
+                href="/sostenibilidad"
+                className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
+              >
+                SOSTENIBILIDAD
+              </Link>
               <Link
                 href="/nosotros"
                 className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
@@ -234,7 +240,7 @@ export default function Header() {
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                Estudio
+                ESTUDIO
               </Link>
               <Link
                 href="/caracteristicas"
@@ -263,6 +269,13 @@ export default function Header() {
                 onClick={handleMobileLinkClick}
               >
                 Fondos de Fotografía
+              </Link>
+              <Link
+                href="/sostenibilidad"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                SOSTENIBILIDAD
               </Link>
               <Link
                 href="/nosotros"
