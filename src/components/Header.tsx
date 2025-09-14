@@ -182,7 +182,7 @@ export default function Header() {
             aria-labelledby="mobile-menu-title"
             className="
               fixed inset-0 z-[9999] bg-white
-              h-[100dvh] w-full
+              h-[100vh] h-[100svh] h-[100dvh] w-full
               overflow-y-auto overscroll-contain
             "
             // padding con safe areas iOS

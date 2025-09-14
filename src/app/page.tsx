@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat flex flex-col text-center"
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat flex flex-col text-center pb-8"
         style={{
           backgroundImage: `url('/img/main.jpg')`,
         }}
