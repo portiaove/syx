@@ -140,7 +140,7 @@ export default function Header() {
                 href="/contacto"
                 className="bg-cta text-primary px-4 py-2 text-sm font-medium rounded hover:bg-yellow-600"
               >
-                RESERVA
+                CONTÁCTANOS
               </Link>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function Header() {
             aria-labelledby="mobile-menu-title"
             className="
               fixed inset-0 z-[9999] bg-white
-              h-[100vh] h-[100svh] h-[100dvh] w-full
+              h-[100dvh] w-full
               overflow-y-auto overscroll-contain
             "
             // padding con safe areas iOS
@@ -289,7 +289,7 @@ export default function Header() {
                 className="mt-3 block px-3 py-3 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-1 text-center mt-2"
                 onClick={handleMobileLinkClick}
               >
-                RESERVA
+                CONTÁCTANOS
               </Link>
             </div>
           </div>

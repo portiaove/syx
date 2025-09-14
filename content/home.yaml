@@ -1,8 +1,8 @@
 hero:
-  title: "Tu nuevo estudio en Madrid, Vallecas"
-  subtitle: "Plató audiovisual para foto y vídeo con luz natural controlable"
+  title: "Estudio audiovisual en Madrid"
+  subtitle: "Plató con luz natural controlable para foto y vídeo"
   cta:
-    label: "RESERVA"
+    label: "CONTÁCTANOS"
     href: "/contacto"
 
 benefits:

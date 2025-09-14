@@ -26,19 +26,21 @@ export default function Home() {
   return (
     <>
       <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat flex flex-col text-center"
         style={{
           backgroundImage: `url('/img/main.jpg')`,
         }}
       >
         {/* <div className="absolute inset-0 bg-black bg-opacity-40"></div> */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
+        <div className="flex-1 flex flex-col justify-end mb-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-2 drop-shadow-2xl">
             {data.hero.title}
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow-lg">
             {data.hero.subtitle}
           </p>
+        </div>
+        <div className="flex-1 flex flex-col justify-center">
           <CTAButton
             href={data.hero.cta.href}
             label={data.hero.cta.label}
