@@ -1,6 +1,5 @@
 import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
-import ContactBlock from "@/components/ContactBlock";
 import Image from "next/image";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
@@ -118,7 +117,6 @@ export default function Nosotros() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }

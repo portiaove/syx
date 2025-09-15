@@ -1,6 +1,5 @@
 import { getContentData } from "@/lib/content";
 import Gallery from "@/components/Gallery";
-import ContactBlock from "@/components/ContactBlock";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface Estudio1Data {
@@ -45,7 +44,6 @@ export default function Estudio1() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }

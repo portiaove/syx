@@ -1,6 +1,5 @@
 import { getContentData } from '@/lib/content';
 import CTAButton from '@/components/CTAButton';
-import ContactBlock from '@/components/ContactBlock';
 import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface SostenibilidadData {
@@ -86,7 +85,6 @@ export default function Sostenibilidad() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { getExtrasContentData } from '@/lib/content';
 import Gallery from '@/components/Gallery';
 import CTAButton from '@/components/CTAButton';
-import ContactBlock from '@/components/ContactBlock';
 import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface FondosData {
@@ -76,7 +75,6 @@ export default function FondosFotografia() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }

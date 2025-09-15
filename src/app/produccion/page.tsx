@@ -1,6 +1,5 @@
 import { getExtrasContentData } from '@/lib/content';
 import CTAButton from '@/components/CTAButton';
-import ContactBlock from '@/components/ContactBlock';
 import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
 
 interface ProduccionData {
@@ -86,7 +85,6 @@ export default function Produccion() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }

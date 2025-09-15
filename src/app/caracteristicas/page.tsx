@@ -1,6 +1,5 @@
 import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
-import ContactBlock from "@/components/ContactBlock";
 import ClickableImage from "@/components/ClickableImage";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
@@ -214,7 +213,6 @@ export default function Caracteristicas() {
         </div>
       </section>
 
-      <ContactBlock />
     </>
   );
 }
