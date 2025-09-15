@@ -74,7 +74,7 @@ export default function Header() {
                   aria-haspopup="true"
                   aria-expanded={isExtrasOpen}
                 >
-                  EXTRAS
+                  ALQUILER DE MATERIAL
                   <svg
                     className="ml-1 h-4 w-4"
                     fill="currentColor"
@@ -93,25 +93,25 @@ export default function Header() {
                   <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50">
                     <div className="py-1">
                       <Link
-                        href="/alquiler-de-material"
+                        href="/iluminacion"
                         className="block px-4 py-2 text-sm text-gray-700 hover:text-cta hover:bg-yellow-50"
                         onClick={handleExtrasLinkClick}
                       >
-                        Alquiler de Material
+                        Iluminación
                       </Link>
                       <Link
-                        href="/produccion"
+                        href="/atrezzo"
                         className="block px-4 py-2 text-sm text-gray-700 hover:text-cta hover:bg-yellow-50"
                         onClick={handleExtrasLinkClick}
                       >
-                        Producción
+                        Atrezzo
                       </Link>
                       <Link
-                        href="/fondos-de-fotografia"
+                        href="/fondos"
                         className="block px-4 py-2 text-sm text-gray-700 hover:text-cta hover:bg-yellow-50"
                         onClick={handleExtrasLinkClick}
                       >
-                        Fondos de Fotografía
+                        Fondos
                       </Link>
                     </div>
                   </div>
@@ -241,21 +241,28 @@ export default function Header() {
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                Alquiler de Material
+                ALQUILER DE MATERIAL
               </Link>
               <Link
-                href="/produccion"
+                href="/iluminacion"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                Producción
+                ILUMINACIÓN
               </Link>
               <Link
-                href="/fondos-de-fotografia"
+                href="/atrezzo"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                Fondos de Fotografía
+                ATREZZO
+              </Link>
+              <Link
+                href="/fondos"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
+                onClick={handleMobileLinkClick}
+              >
+                FONDOS
               </Link>
               <Link
                 href="/sostenibilidad"

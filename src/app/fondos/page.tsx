@@ -12,7 +12,7 @@ interface FondosData {
 
 export const metadata = generateSEOMetadata(SEOPresets.fondos);
 
-export default function FondosFotografia() {
+export default function Fondos() {
   const data = getExtrasContentData('fondos') as FondosData;
 
   return (

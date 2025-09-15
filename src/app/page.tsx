@@ -138,12 +138,12 @@ export default function Home() {
                   service.includes("vídeo") ||
                   service.includes("Eventos")
                 ) {
-                  return "/produccion";
+                  return "/atrezzo";
                 }
                 if (service.includes("Alquiler")) {
                   return "/alquiler-de-material";
                 }
-                return "/produccion";
+                return "/atrezzo";
               };
 
               return (

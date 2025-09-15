@@ -1,73 +1,80 @@
-import { getExtrasContentData } from '@/lib/content';
-import CTAButton from '@/components/CTAButton';
-import { generateSEOMetadata, SEOPresets } from '@/components/SEOHead';
-
-interface AlquilerMaterialData {
-  headline: string;
-  paragraphs: string[];
-  benefits: string[];
-  equipment: string[];
-}
+import Link from "next/link";
+import CTAButton from "@/components/CTAButton";
+import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 export const metadata = generateSEOMetadata(SEOPresets.alquiler);
 
-export default function AlquilerMaterial() {
-  const data = getExtrasContentData('alquiler-material') as AlquilerMaterialData;
+export default function AlquilerDeMaterial() {
+  const servicios = [
+    {
+      title: "Iluminación",
+      description: "Equipos de iluminación profesional PROFOTO y material técnico",
+      href: "/iluminacion",
+      image: "/img/equipment-placeholder.jpg"
+    },
+    {
+      title: "Atrezzo",
+      description: "Servicios de producción audiovisual integral",
+      href: "/atrezzo", 
+      image: "/img/production-placeholder.jpg"
+    },
+    {
+      title: "Fondos",
+      description: "Fondos únicos pintados a mano para tus sesiones",
+      href: "/fondos",
+      image: "/img/fondos-placeholder.jpg"
+    }
+  ];
 
   return (
     <>
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              {data.headline}
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+              Alquiler de Material
             </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Descubre todos nuestros servicios adicionales para tus proyectos audiovisuales
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div>
-              <div className="space-y-6 mb-8">
-                {data.paragraphs.map((paragraph, index) => (
-                  <p key={index} className="text-gray-600 text-lg">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {servicios.map((servicio, index) => (
+              <Link
+                key={index}
+                href={servicio.href}
+                className="block group"
+              >
+                <div className="bg-white rounded-lg shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
+                  <div className="relative h-48 bg-gray-100">
+                    {/* Placeholder para imagen - puedes reemplazar con imágenes reales */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center">
+                      <span className="text-accent font-semibold text-lg">{servicio.title}</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-cta transition-colors">
+                      {servicio.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {servicio.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Beneficios</h2>
-              <ul className="space-y-3">
-                {data.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Equipos Disponibles</h2>
-              <ul className="space-y-4">
-                {data.equipment.map((item, index) => (
-                  <li key={index} className="flex items-center p-3 bg-white rounded border">
-                    <div className="w-3 h-3 bg-accent rounded-full mr-3"></div>
-                    <span className="text-gray-700 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="mt-8">
-                <CTAButton 
-                  href="/contacto" 
-                  label="Solicitar presupuesto"
-                  className="w-full text-center"
-                />
-              </div>
-            </div>
+          <div className="text-center">
+            <CTAButton
+              href="/contacto"
+              label="Consultar disponibilidad"
+              className="text-lg px-8 py-4"
+            />
           </div>
         </div>
       </section>
-
     </>
   );
 }

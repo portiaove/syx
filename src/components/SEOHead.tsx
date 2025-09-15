@@ -143,7 +143,7 @@ export const SEOPresets = {
       "eventos corporativos",
       "direccion creativa",
     ],
-    url: "https://syxestudio.es/produccion/",
+    url: "https://syxestudio.es/atrezzo/",
   },
   alquiler: {
     title: "Alquiler de Material Audiovisual - Equipos Profesionales",
@@ -169,7 +169,7 @@ export const SEOPresets = {
       "texturas profesionales",
       "cyclorama",
     ],
-    url: "https://syxestudio.es/fondos-de-fotografia/",
+    url: "https://syxestudio.es/fondos/",
   },
   contacto: {
     title: "Contacto y Reservas - SYX Estudio Madrid",

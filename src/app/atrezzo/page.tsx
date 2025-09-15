@@ -27,7 +27,7 @@ interface ProduccionData {
 
 export const metadata = generateSEOMetadata(SEOPresets.produccion);
 
-export default function Produccion() {
+export default function Atrezzo() {
   const data = getExtrasContentData('produccion') as ProduccionData;
 
   return (
