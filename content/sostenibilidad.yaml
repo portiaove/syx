@@ -1,10 +1,8 @@
 headline: "Compromiso con la sostenibilidad"
 
-net_zero_statement: "Nuestro estudio opera bajo el concepto Net Zero, reduciendo al máximo nuestras emisiones y compensando las restantes mediante iniciativas de reforestación en el Amazonas, apoyando al mismo tiempo el empleo de poblaciones indígenas locales."
+net_zero_statement: "Nuestro estudio opera bajo el concepto Net Zero, reduciendo al máximo nuestras emisiones."
 
 initiatives:
-  - "Plantación de árboles en el Amazonas"
-  - "Apoyo empleo población indígena local"
   - "Autoconsumo energético con placas fotovoltaicas"
   - "Reducción de residuos y reciclaje"
 
