@@ -188,9 +188,8 @@ export default function Header() {
             aria-modal="true"
             className="
               fixed top-16 left-0 right-0 bottom-0 z-[9998] bg-white
-              overflow-y-auto overscroll-contain
+      flex flex-col overflow-hidden overscroll-contain
             "
-            // padding con safe areas iOS
             style={{
               paddingTop: "max(16px, env(safe-area-inset-top))",
               paddingRight: "max(16px, env(safe-area-inset-right))",
@@ -198,9 +197,7 @@ export default function Header() {
               paddingLeft: "max(16px, env(safe-area-inset-left))",
             }}
           >
-
-            {/* Links del menú */}
-            <div className="px-4 pt-4 pb-6 space-y-1">
+            <div className="px-4 pt-4 pb-6 space-y-1 overflow-y-auto min-h-0">
               <Link
                 href="/"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
@@ -250,9 +247,11 @@ export default function Header() {
               >
                 SOSTENIBILIDAD
               </Link>
+            </div>
+            <div className="flex-1 flex items-center justify-center px-4 pb-6">
               <Link
                 href="/contacto"
-                className="mt-3 block px-3 py-3 text-base font-medium bg-cta text-primary rounded hover:bg-yellow-600 mx-1 text-center mt-2"
+                className="block w-full max-w-sm px-3 py-3 text-base font-medium bg-cta text-primary rounded text-center hover:bg-yellow-600"
                 onClick={handleMobileLinkClick}
               >
                 CONTÁCTANOS
