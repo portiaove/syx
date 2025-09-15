@@ -82,7 +82,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Link href="/estudio" className="block">
+            <Link href="/el-estudio" className="block">
               <div className="relative h-96 rounded-lg overflow-hidden border-2 border-transparent hover:border-cta transition-all duration-300">
                 <Image
                   src="/img/_SX_5180-1__msi___jpg.jpg"
@@ -101,7 +101,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/caracteristicas" className="block">
+            <Link href="/el-estudio" className="block">
               <div className="relative h-96 rounded-lg overflow-hidden border-2 border-transparent hover:border-cta transition-all duration-300">
                 <Image
                   src="/img/_SX_5184-1__msi___jpg.jpg"
@@ -163,7 +163,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <CTAButton
-              href="/estudio"
+              href="/el-estudio"
               label="Conoce nuestro Estudio"
               variant="secondary"
             />

@@ -1,6 +1,7 @@
 import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
 import ClickableImage from "@/components/ClickableImage";
+import Gallery from "@/components/Gallery";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface CaracteristicasData {
@@ -21,10 +22,17 @@ interface CaracteristicasData {
   };
 }
 
-export const metadata = generateSEOMetadata(SEOPresets.caracteristicas);
+interface EstudioData {
+  summary: string;
+  gallery: string[];
+  features: string[];
+}
 
-export default function Caracteristicas() {
-  const data = getContentData("caracteristicas") as CaracteristicasData;
+export const metadata = generateSEOMetadata(SEOPresets.estudio1);
+
+export default function ElEstudio() {
+  const caracteristicasData = getContentData("caracteristicas") as CaracteristicasData;
+  const estudioData = getContentData("estudio") as EstudioData;
 
   return (
     <>
@@ -32,20 +40,21 @@ export default function Caracteristicas() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Características
+              El Estudio
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Descubre todo lo que nuestro estudio puede ofrecerte
             </p>
           </div>
 
+          {/* CARACTERÍSTICAS SECTION */}
           {/* Mobile: Ubicación y Especificaciones primero */}
           <div className="lg:hidden mb-12">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-primary mb-6">
                 Ubicación y Acceso
               </h2>
-              <p className="text-gray-600 mb-6">{data.location.description}</p>
+              <p className="text-gray-600 mb-6">{caracteristicasData.location.description}</p>
 
               <h3 className="text-xl font-semibold text-primary mb-4">
                 Especificaciones del Espacio
@@ -54,31 +63,31 @@ export default function Caracteristicas() {
                 <div className="flex justify-between">
                   <span className="text-gray-600">Superficie total:</span>
                   <span className="font-semibold">
-                    {data.space.total_m2} m²
+                    {caracteristicasData.space.total_m2} m²
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Estudio:</span>
                   <span className="font-semibold">
-                    {data.space.studio1_m2} m²
+                    {caracteristicasData.space.studio1_m2} m²
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Altura máxima:</span>
                   <span className="font-semibold">
-                    {data.space.max_height_m} m
+                    {caracteristicasData.space.max_height_m} m
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Entrada de vehículos:</span>
                   <span className="font-semibold">
-                    {data.entry_for_vehicles ? "Sí" : "No"}
+                    {caracteristicasData.entry_for_vehicles ? "Sí" : "No"}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Imagen en mobile */}
+            {/* Imagen características en mobile */}
             <div className="relative h-80 mb-8 rounded-lg overflow-hidden bg-gray-50">
               <ClickableImage
                 src="/img/caracteristicas__msi___jpg.jpg"
@@ -89,13 +98,13 @@ export default function Caracteristicas() {
               />
             </div>
 
-            {/* Resto del contenido en mobile */}
+            {/* Resto del contenido características en mobile */}
             <div>
               <h2 className="text-2xl font-bold text-primary mb-6">
                 Instalaciones
               </h2>
               <ul className="space-y-3 mb-8">
-                {data.installations.map((installation, index) => (
+                {caracteristicasData.installations.map((installation, index) => (
                   <li key={index} className="flex items-center">
                     <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                     <span className="text-gray-700">{installation}</span>
@@ -106,8 +115,8 @@ export default function Caracteristicas() {
               <h2 className="text-2xl font-bold text-primary mb-6">
                 Sostenibilidad
               </h2>
-              <ul className="space-y-3">
-                {data.sustainability.map((item, index) => (
+              <ul className="space-y-3 mb-12">
+                {caracteristicasData.sustainability.map((item, index) => (
                   <li key={index} className="flex items-center">
                     <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                     <span className="text-gray-700">{item}</span>
@@ -117,7 +126,7 @@ export default function Caracteristicas() {
             </div>
           </div>
 
-          {/* Desktop: Layout con imagen a la derecha */}
+          {/* Desktop: Layout características con imagen a la derecha */}
           <div className="hidden lg:grid lg:grid-cols-3 gap-12 mb-16">
             {/* Contenido a la izquierda (2 columnas) */}
             <div className="lg:col-span-2 space-y-8">
@@ -126,7 +135,7 @@ export default function Caracteristicas() {
                   Ubicación y Acceso
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  {data.location.description}
+                  {caracteristicasData.location.description}
                 </p>
 
                 <h3 className="text-xl font-semibold text-primary mb-4">
@@ -136,25 +145,25 @@ export default function Caracteristicas() {
                   <div className="flex justify-between">
                     <span className="text-gray-600">Superficie total:</span>
                     <span className="font-semibold">
-                      {data.space.total_m2} m²
+                      {caracteristicasData.space.total_m2} m²
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Estudio:</span>
                     <span className="font-semibold">
-                      {data.space.studio1_m2} m²
+                      {caracteristicasData.space.studio1_m2} m²
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Altura máxima:</span>
                     <span className="font-semibold">
-                      {data.space.max_height_m} m
+                      {caracteristicasData.space.max_height_m} m
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Entrada de vehículos:</span>
                     <span className="font-semibold">
-                      {data.entry_for_vehicles ? "Sí" : "No"}
+                      {caracteristicasData.entry_for_vehicles ? "Sí" : "No"}
                     </span>
                   </div>
                 </div>
@@ -165,7 +174,7 @@ export default function Caracteristicas() {
                   Instalaciones
                 </h2>
                 <ul className="space-y-3 mb-8">
-                  {data.installations.map((installation, index) => (
+                  {caracteristicasData.installations.map((installation, index) => (
                     <li key={index} className="flex items-center">
                       <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                       <span className="text-gray-700">{installation}</span>
@@ -177,7 +186,7 @@ export default function Caracteristicas() {
                   Sostenibilidad
                 </h2>
                 <ul className="space-y-3">
-                  {data.sustainability.map((item, index) => (
+                  {caracteristicasData.sustainability.map((item, index) => (
                     <li key={index} className="flex items-center">
                       <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                       <span className="text-gray-700">{item}</span>
@@ -187,7 +196,7 @@ export default function Caracteristicas() {
               </div>
             </div>
 
-            {/* Imagen a la derecha (1 columna) */}
+            {/* Imagen características a la derecha (1 columna) */}
             <div className="lg:col-span-1">
               <div className="sticky top-8">
                 <div className="relative h-96 rounded-lg overflow-hidden bg-gray-50">
@@ -203,16 +212,44 @@ export default function Caracteristicas() {
             </div>
           </div>
 
+          {/* SEPARADOR VISUAL */}
+          <div className="border-b border-gray-200 mb-16"></div>
+
+          {/* ESTUDIO SECTION */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-primary mb-6">
+              Galería del Estudio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              {estudioData.summary}
+            </p>
+          </div>
+
+          <Gallery images={estudioData.gallery} alt="Estudio" className="mb-16" />
+
+          <div className="bg-gray-50 rounded-lg p-8 mb-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              Características principales
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {estudioData.features.map((feature, index) => (
+                <div key={index} className="flex items-center">
+                  <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                  <span className="text-gray-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="text-center">
             <CTAButton
-              href={data.cta.href}
-              label={data.cta.label}
+              href={caracteristicasData.cta.href}
+              label={caracteristicasData.cta.label}
               className="text-lg px-8 py-4"
             />
           </div>
         </div>
       </section>
-
     </>
   );
 }

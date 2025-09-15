@@ -61,16 +61,10 @@ export default function Header() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                href="/estudio"
+                href="/el-estudio"
                 className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
               >
-                ESTUDIO
-              </Link>
-              <Link
-                href="/caracteristicas"
-                className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
-              >
-                CARACTERÍSTICAS
+                EL ESTUDIO
               </Link>
 
               <div className="relative" ref={dropdownRef}>
@@ -236,18 +230,11 @@ export default function Header() {
                 INICIO
               </Link>
               <Link
-                href="/estudio"
+                href="/el-estudio"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
                 onClick={handleMobileLinkClick}
               >
-                ESTUDIO
-              </Link>
-              <Link
-                href="/caracteristicas"
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
-                onClick={handleMobileLinkClick}
-              >
-                CARACTERÍSTICAS
+                EL ESTUDIO
               </Link>
               <Link
                 href="/alquiler-de-material"

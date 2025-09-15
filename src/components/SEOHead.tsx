@@ -114,32 +114,23 @@ export const SEOPresets = {
     url: "https://syxestudio.es",
   },
   estudio1: {
-    title: "Estudio - 322m² con Luz Natural Controlable",
+    title: "El Estudio - Instalaciones y Galería - SYX Estudio Madrid",
     description:
-      "322 m² con alturas hasta 7 m, luz natural controlable, camerino, cocina y acceso de vehículos. Estudio NET ZERO con energía renovable.",
+      "Descubre nuestro estudio audiovisual de 322 m² en Vallecas, Madrid. Características técnicas, instalaciones PROFOTO y galería completa.",
     keywords: [
+      "estudio audiovisual madrid",
       "322 metros cuadrados",
       "7 metros altura",
+      "instalaciones profoto",
+      "fondos pintados",
       "camerino profesional",
       "cocina estudio",
       "pmr accesible",
-    ],
-    url: "https://syxestudio.es/estudio/",
-    image: "/img/_SX_5180-1__msi___jpg.jpg",
-  },
-  caracteristicas: {
-    title: "Características del Estudio - Instalaciones y Equipamiento",
-    description:
-      "322 m² de estudio audiovisual en Vallecas, Madrid. Iluminación PROFOTO, fondos pintados, accesibilidad PMR y energía 100% renovable.",
-    keywords: [
-      "instalaciones profoto",
-      "fondos pintados",
-      "accesibilidad pmr",
       "energia renovable",
       "sostenible",
     ],
-    url: "https://syxestudio.es/caracteristicas/",
-    image: "/img/caracteristicas__msi___jpg.jpg",
+    url: "https://syxestudio.es/el-estudio/",
+    image: "/img/_SX_5180-1__msi___jpg.jpg",
   },
   produccion: {
     title: "Servicios de Producción - Fotografía, Vídeo y Eventos",

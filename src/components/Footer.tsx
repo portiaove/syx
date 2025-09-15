@@ -103,19 +103,13 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/estudio"
+                  href="/el-estudio"
                   className="text-gray-300 hover:text-white"
                 >
-                  Estudio
+                  El Estudio
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/caracteristicas"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Características
-                </Link>
               </li>
               <li>
                 <Link
