@@ -83,7 +83,7 @@ export default function Footer() {
       {/* Footer */}
       <footer className="bg-primary text-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-lg font-semibold mb-4">SYX ESTUDIO</h3>
             <p className="text-gray-300 mb-4">
@@ -91,10 +91,36 @@ export default function Footer() {
               con luz natural controlable.
             </p>
             <div className="text-gray-300">
-              <p>C/ Vizconde de Arlessón, 21</p>
-              <p>28018 Madrid</p>
-              <p className="mt-2">666 849 365</p>
-              <p>syxestudio@gmail.com</p>
+              <a 
+                href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-white transition-colors"
+              >
+                C/ Vizconde de Arlessón, 21
+              </a>
+              <a 
+                href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-white transition-colors"
+              >
+                28018 Madrid
+              </a>
+              <a 
+                href="https://api.whatsapp.com/send?phone=34666849365"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mt-2 hover:text-white transition-colors"
+              >
+                666 849 365
+              </a>
+              <a 
+                href="mailto:syxestudio@gmail.com"
+                className="block hover:text-white transition-colors"
+              >
+                syxestudio@gmail.com
+              </a>
             </div>
           </div>
 
@@ -107,16 +133,6 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white"
                 >
                   El Estudio
-                </Link>
-              </li>
-              <li>
-              </li>
-              <li>
-                <Link
-                  href="/nosotros"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Nosotros
                 </Link>
               </li>
               <li>
@@ -170,7 +186,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p className="text-gray-300 text-sm">
               © 2025 ARLESSON ESTUDIO SL. Todos los derechos reservados.
             </p>

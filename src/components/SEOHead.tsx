@@ -183,18 +183,6 @@ export const SEOPresets = {
     ],
     url: "https://syxestudio.es/contacto/",
   },
-  nosotros: {
-    title: "Nosotros - Quiénes Somos | SYX Estudio",
-    description:
-      "Conoce el equipo de SYX Estudio, profesionales especializados en fotografía y vídeo con años de experiencia en producción audiovisual.",
-    keywords: [
-      "equipo syx estudio",
-      "fotografos profesionales",
-      "experiencia audiovisual",
-      "equipo creativo",
-    ],
-    url: "https://syxestudio.es/nosotros/",
-  },
   sostenibilidad: {
     title: "Sostenibilidad - Estudio NET ZERO con Energía Renovable",
     description:

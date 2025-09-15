@@ -125,12 +125,6 @@ export default function Header() {
                 SOSTENIBILIDAD
               </Link>
               <Link
-                href="/nosotros"
-                className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
-              >
-                NOSOTROS
-              </Link>
-              <Link
                 href="/contacto"
                 className="bg-cta text-primary px-4 py-2 text-sm font-medium rounded hover:bg-yellow-600"
               >
@@ -270,13 +264,6 @@ export default function Header() {
                 onClick={handleMobileLinkClick}
               >
                 SOSTENIBILIDAD
-              </Link>
-              <Link
-                href="/nosotros"
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
-                onClick={handleMobileLinkClick}
-              >
-                NOSOTROS
               </Link>
               <Link
                 href="/contacto"
