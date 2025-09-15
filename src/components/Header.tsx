@@ -26,6 +26,7 @@ export default function Header() {
   // refs para accesibilidad/foco
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useBodyScrollLock(isMenuOpen);
@@ -48,12 +49,12 @@ export default function Header() {
   const handleMobileLinkClick = () => setIsMenuOpen(false);
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm relative z-[9999]">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold text-primary">
-              SYX ESTUDIO
+              3x2 = SYX
             </Link>
           </div>
 
@@ -136,71 +137,18 @@ export default function Header() {
           {/* Botón menú móvil */}
           <div className="md:hidden">
             <button
-              ref={menuButtonRef}
-              onClick={() => setIsMenuOpen(true)}
+              ref={isMenuOpen ? closeButtonRef : menuButtonRef}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 hover:text-primary p-2"
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
-              aria-label="Abrir menú"
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* --- OVERLAY MÓVIL A PANTALLA COMPLETA --- */}
-        {isMenuOpen && (
-          <div
-            id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="mobile-menu-title"
-            className="
-              fixed inset-0 z-[9999] bg-white
-              h-[100vh] h-[100svh] h-[100dvh] w-full
-              overflow-y-auto overscroll-contain
-            "
-            // padding con safe areas iOS
-            style={{
-              paddingTop: "max(16px, env(safe-area-inset-top))",
-              paddingRight: "max(16px, env(safe-area-inset-right))",
-              paddingBottom: "max(16px, env(safe-area-inset-bottom))",
-              paddingLeft: "max(16px, env(safe-area-inset-left))",
-            }}
-          >
-            {/* Barra superior dentro del overlay */}
-            <div className="flex items-center justify-between px-4 py-3 border-b">
-              <Link
-                href="/"
-                id="mobile-menu-title"
-                className="text-lg font-semibold text-gray-900"
-                onClick={handleMobileLinkClick}
-              >
-                SYX ESTUDIO
-              </Link>
-              <button
-                ref={closeButtonRef}
-                onClick={() => setIsMenuOpen(false)}
-                className="p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                aria-label="Cerrar menú"
-              >
+              {isMenuOpen ? (
                 <svg
                   className="h-6 w-6"
-                  viewBox="0 0 24 24"
                   fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                   aria-hidden="true"
                 >
@@ -211,11 +159,48 @@ export default function Header() {
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-              </button>
-            </div>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* --- OVERLAY MÓVIL A PANTALLA COMPLETA --- */}
+        {isMenuOpen && (
+          <div
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            className="
+              fixed top-16 left-0 right-0 bottom-0 z-[9998] bg-white
+              overflow-y-auto overscroll-contain
+            "
+            // padding con safe areas iOS
+            style={{
+              paddingTop: "max(16px, env(safe-area-inset-top))",
+              paddingRight: "max(16px, env(safe-area-inset-right))",
+              paddingBottom: "max(16px, env(safe-area-inset-bottom))",
+              paddingLeft: "max(16px, env(safe-area-inset-left))",
+            }}
+          >
 
             {/* Links del menú */}
-            <div className="px-2 pt-2 pb-6 space-y-1">
+            <div className="px-4 pt-4 pb-6 space-y-1">
               <Link
                 href="/"
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
