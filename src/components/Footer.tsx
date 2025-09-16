@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getContentData } from "@/lib/content";
+import { PHONE_1_DISPLAY, WHATSAPP_URL_1 } from "@/lib/phone";
 
 interface ContactoData {
   form_fields: Array<{
@@ -108,12 +109,12 @@ export default function Footer() {
                 28018 Madrid
               </a>
               <a 
-                href="https://api.whatsapp.com/send?phone=34666849365"
+                href={WHATSAPP_URL_1}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block mt-2 hover:text-white transition-colors"
               >
-                666 849 365
+                {PHONE_1_DISPLAY}
               </a>
               <a 
                 href="mailto:syxestudio@gmail.com"

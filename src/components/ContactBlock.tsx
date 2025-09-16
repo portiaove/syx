@@ -1,3 +1,5 @@
+import { PHONE_1_DISPLAY, PHONE_2_DISPLAY, WHATSAPP_URL_1 } from "@/lib/phone";
+
 interface ContactBlockProps {
   className?: string;
 }
@@ -13,8 +15,8 @@ export default function ContactBlock({ className = "" }: ContactBlockProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Teléfono</h3>
-              <p className="text-gray-600">666 849 365</p>
-              <p className="text-gray-600">690 639 894</p>
+              <p className="text-gray-600">{PHONE_1_DISPLAY}</p>
+              <p className="text-gray-600">{PHONE_2_DISPLAY}</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
@@ -23,7 +25,7 @@ export default function ContactBlock({ className = "" }: ContactBlockProps) {
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">WhatsApp</h3>
               <a 
-                href="https://api.whatsapp.com/send?phone=34666849365"
+                href={WHATSAPP_URL_1}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-green-600 hover:text-green-700"

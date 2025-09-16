@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { PHONE_1_DISPLAY } from "@/lib/phone";
 
 interface SEOProps {
   title: string;
@@ -174,7 +175,7 @@ export const SEOPresets = {
   contacto: {
     title: "Contacto y Reservas - SYX Estudio Madrid",
     description:
-      "Contacta con SYX Estudio para reservar tu sesión. Teléfono: 666 849 365. C/ Vizconde de Arlessón, 21, Madrid.",
+      `Contacta con SYX Estudio para reservar tu sesión. Teléfono: ${PHONE_1_DISPLAY}. C/ Vizconde de Arlessón, 21, Madrid.`,
     keywords: [
       "reservas estudio madrid",
       "contacto syx estudio",
