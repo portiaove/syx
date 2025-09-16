@@ -134,7 +134,7 @@ export default function Header() {
                   href="/contacto"
                   className="bg-cta text-primary px-4 py-2 text-sm font-medium rounded hover:bg-yellow-600"
                 >
-                  CONTÁCTANOS
+                  ¡Claro que Syx!
                 </Link>
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function Header() {
               className="block w-full max-w-sm px-3 py-3 text-base font-medium bg-cta text-primary rounded text-center hover:bg-yellow-600"
               onClick={handleMobileLinkClick}
             >
-              CONTÁCTANOS
+              ¡Claro que Syx!
             </Link>
           </div>
         </div>
