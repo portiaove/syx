@@ -203,13 +203,6 @@ export default function Header() {
         >
           <div className="px-4 pt-4 pb-6 space-y-1 overflow-y-auto min-h-0">
             <Link
-              href="/"
-              className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
-              onClick={handleMobileLinkClick}
-            >
-              INICIO
-            </Link>
-            <Link
               href="/el-estudio"
               className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
               onClick={handleMobileLinkClick}
