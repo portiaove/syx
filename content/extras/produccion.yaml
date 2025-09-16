@@ -27,7 +27,7 @@ blocks:
       ]
   logistica:
     title: "Logística"
-    items: ["Casting", "Transporte", "Catering", "Alojamiento"]
+    items: ["Casting", "Transporte", "Catering"]
 
 benefits:
   - "Ahorro de tiempo"
