@@ -26,7 +26,6 @@ export default function Header() {
   // refs para accesibilidad/foco
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useBodyScrollLock(isMenuOpen);
