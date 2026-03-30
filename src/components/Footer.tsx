@@ -13,7 +13,7 @@ interface ContactoData {
 }
 
 export default function Footer() {
-  const data = getContentData('contacto') as ContactoData;
+  const data = getContentData("contacto") as ContactoData;
 
   return (
     <>
@@ -43,14 +43,18 @@ export default function Footer() {
                 Cuéntanos tu idea y te ayudamos a hacerla realidad
               </p>
             </div>
-            
+
             <form action="/api/contact" method="POST" className="space-y-6">
               {data.form_fields.map((field) => (
                 <div key={field.name}>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-2">
-                    {field.label} {field.required && <span className="text-cta">*</span>}
+                  <label
+                    htmlFor={field.name}
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    {field.label}{" "}
+                    {field.required && <span className="text-cta">*</span>}
                   </label>
-                  {field.type === 'textarea' ? (
+                  {field.type === "textarea" ? (
                     <textarea
                       id={field.name}
                       name={field.name}
@@ -69,7 +73,7 @@ export default function Footer() {
                   )}
                 </div>
               ))}
-              
+
               <button
                 type="submit"
                 className="w-full bg-cta text-primary py-3 px-6 rounded-md hover:bg-yellow-600 transition-colors font-medium"
@@ -84,120 +88,117 @@ export default function Footer() {
       {/* Footer */}
       <footer className="bg-primary text-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-lg font-semibold mb-4">SYX ESTUDIO</h3>
-            <p className="text-gray-300 mb-4">
-              Plató audiovisual en Madrid especializado en fotografía y vídeo
-              con luz natural controlable.
-            </p>
-            <div className="text-gray-300">
-              <a 
-                href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block hover:text-white transition-colors"
-              >
-                C/ Vizconde de Arlessón, 21
-              </a>
-              <a 
-                href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block hover:text-white transition-colors"
-              >
-                28018 Madrid
-              </a>
-              <a 
-                href={WHATSAPP_URL_1}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-2 hover:text-white transition-colors"
-              >
-                {PHONE_1_DISPLAY}
-              </a>
-              <a 
-                href="mailto:syxestudio@gmail.com"
-                className="block hover:text-white transition-colors"
-              >
-                syxestudio@gmail.com
-              </a>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-lg font-semibold mb-4">SYX ESTUDIO</h3>
+              <p className="text-gray-300 mb-4">
+                Plató audiovisual en Madrid especializado en fotografía y vídeo
+                con luz natural controlable.
+              </p>
+              <div className="text-gray-300">
+                <a
+                  href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-white transition-colors"
+                >
+                  C/ Vizconde de Arlessón, 21
+                </a>
+                <a
+                  href="https://maps.google.com/?q=C/ Vizconde de Arlessón, 21, 28018 Madrid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-white transition-colors"
+                >
+                  28018 Madrid
+                </a>
+                <a
+                  href={WHATSAPP_URL_1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-2 hover:text-white transition-colors"
+                >
+                  {PHONE_1_DISPLAY}
+                </a>
+                <a
+                  href="mailto:syxestudio@gmail.com"
+                  className="block hover:text-white transition-colors"
+                >
+                  syxestudio@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Enlaces</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/el-estudio"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    El Estudio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/sostenibilidad"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Sostenibilidad
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/aviso-legal"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Aviso Legal
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/politica-de-privacidad"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Política de Privacidad
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/politica-de-cookies"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Política de Cookies
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/declaracion-de-accesibilidad"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Declaración de Accesibilidad
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Enlaces</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/el-estudio"
-                  className="text-gray-300 hover:text-white"
-                >
-                  El Estudio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sostenibilidad"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Sostenibilidad
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/aviso-legal"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Aviso Legal
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/politica-de-privacidad"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Política de Privacidad
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/politica-de-cookies"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Política de Cookies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/declaracion-de-accesibilidad"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Declaración de Accesibilidad
-                </Link>
-              </li>
-            </ul>
+          <div className="mt-8 pt-8 border-t border-gray-700">
+            <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+              <p className="text-gray-300 text-sm">
+                © 2025 ARLESSON ESTUDIO SL. Todos los derechos reservados.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div className="mt-8 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p className="text-gray-300 text-sm">
-              © 2025 ARLESSON ESTUDIO SL. Todos los derechos reservados.
-            </p>
-            <p className="text-gray-300 text-sm mt-2 md:mt-0">
-              Desarrollado por <span className="text-white">aove</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 }
