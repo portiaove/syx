@@ -191,7 +191,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-700">
-            <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div className="flex justify-center">
               <p className="text-gray-300 text-sm">
                 © 2025 ARLESSON ESTUDIO SL. Todos los derechos reservados.
               </p>
