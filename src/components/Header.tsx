@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 function useBodyScrollLock(locked: boolean) {
   useEffect(() => {
@@ -22,6 +23,8 @@ function useBodyScrollLock(locked: boolean) {
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExtrasOpen, setIsExtrasOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   // refs para accesibilidad/foco
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -49,14 +52,14 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-white shadow-sm relative z-[9999]">
+      <header className={`z-[9999] ${isHome ? "fixed top-0 left-0 right-0 bg-transparent" : "bg-white shadow-sm relative"}`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <Link
                 href="/"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-2xl font-bold text-primary"
+                className={`text-2xl font-bold ${isHome ? "text-white" : "text-primary"}`}
               >
                 3x2 = SYX
               </Link>
@@ -67,7 +70,7 @@ export default function Header() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/el-estudio"
-                  className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
+                  className={`${isHome ? "text-white/90 hover:text-cta" : "text-gray-700 hover:text-cta"} px-3 py-2 text-sm font-medium`}
                 >
                   EL ESTUDIO
                 </Link>
@@ -75,7 +78,7 @@ export default function Header() {
                 <div className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setIsExtrasOpen((v) => !v)}
-                    className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium flex items-center cursor-pointer"
+                    className={`${isHome ? "text-white/90 hover:text-cta" : "text-gray-700 hover:text-cta"} px-3 py-2 text-sm font-medium flex items-center cursor-pointer`}
                     aria-haspopup="true"
                     aria-expanded={isExtrasOpen}
                   >
@@ -125,7 +128,7 @@ export default function Header() {
 
                 <Link
                   href="/sostenibilidad"
-                  className="text-gray-700 hover:text-cta px-3 py-2 text-sm font-medium"
+                  className={`${isHome ? "text-white/90 hover:text-cta" : "text-gray-700 hover:text-cta"} px-3 py-2 text-sm font-medium`}
                 >
                   SOSTENIBILIDAD
                 </Link>
@@ -143,7 +146,7 @@ export default function Header() {
               <button
                 ref={isMenuOpen ? closeButtonRef : menuButtonRef}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-primary p-2"
+                className={`${isHome ? "text-white hover:text-cta" : "text-gray-700 hover:text-primary"} p-2`}
                 aria-controls="mobile-menu"
                 aria-expanded={isMenuOpen}
                 aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
