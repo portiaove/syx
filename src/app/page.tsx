@@ -12,7 +12,8 @@ export default function Home() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/SYXHOME_1.mp4" type="video/mp4" />
+        <source src="/videos/SYXHOME_web.webm" type="video/webm" />
+        <source src="/videos/SYXHOME_web.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-black/30" />

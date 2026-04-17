@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# videos originales sin comprimir
+public/videos/SYXHOME_1.mp4
