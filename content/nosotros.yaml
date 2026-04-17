@@ -1,20 +1,30 @@
-headline: "Conoce a nuestro equipo"
+headline: "Un plató audiovisual de 322 m² en el corazón de Vallecas, Madrid"
 
-people:
-  - name: "Ximena Garrigues"
-    role: "Creadora audiovisual"
-    bio: "Creadora audiovisual con más de 20 años de experiencia. Sus trabajos han sido expuestos en espacios como Matadero Madrid y publicados en medios como El País Semanal, ELLE, ICON y Harper's Bazaar."
-    img: "/img/11M-48__msi___jpg.jpg"
-  - name: "Sergio Moya"
-    role: "Creador audiovisual"
-    bio: "Creador audiovisual especializado en fotografía y vídeo. Con una amplia trayectoria en el sector, ha desarrollado proyectos para importantes publicaciones y marcas."
-    img: "/img/11M-47__msi___jpg.jpg"
+address: "C/ Vizconde de Arlessón, 21, 28018 Madrid"
+district: "Vallecas, Madrid"
+size: "322 m²"
+height: "7 m de altura"
+email: "syxestudio@gmail.com"
+hours: "Lunes - Sábado 08:00 - 20:00"
 
-experience:
-  years: "20+"
-  exhibitions: ["Matadero Madrid"]
-  publications: ["El País Semanal", "ELLE", "ICON", "Harper's Bazaar"]
+description: >
+  SYX Estudio es un espacio audiovisual profesional diseñado para fotografía,
+  vídeo y producción creativa. Situado en Vallecas, Madrid, cuenta con 322 m²
+  diáfanos, 7 metros de altura y luz natural controlable para adaptarse a
+  cualquier tipo de proyecto.
 
-external_link:
-  label: "XIMENA Y SERGIO"
-  href: "https://www.syxestudio.com"
+highlights:
+  - label: "Superficie"
+    value: "322 m²"
+  - label: "Altura"
+    value: "7 metros"
+  - label: "Iluminación"
+    value: "Luz natural controlable + PROFOTO"
+  - label: "Acceso"
+    value: "Vehículos hasta furgoneta"
+  - label: "Energía"
+    value: "100% renovable — NET ZERO"
+  - label: "Horario"
+    value: "Lunes – Sábado 08:00–20:00"
+
+maps_url: "https://maps.google.com/?q=C/+Vizconde+de+Arless%C3%B3n,+21,+28018+Madrid"
