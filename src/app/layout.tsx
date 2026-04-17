@@ -9,48 +9,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | SYX Estudio Madrid',
-    default: 'SYX Estudio - Plató Audiovisual en Madrid, Vallecas',
+    template: '%s | SYX Estudio',
+    default: 'SYX Estudio — Plató audiovisual en Madrid',
   },
-  description: 'Estudio de fotografía y vídeo en Madrid con 322m², luz natural controlable, material PROFOTO y acceso para vehículos.',
-  keywords: 'estudio fotografico madrid, plato audiovisual, alquiler estudio madrid, estudio video madrid, vallecas, luz natural, profoto',
-  authors: [{ name: 'SYX Estudio' }],
-  creator: 'SYX Estudio',
-  publisher: 'SYX Estudio',
+  description: 'Estudio de fotografía y vídeo de 322 m² en Vallecas, Madrid. Luz natural controlable, iluminación PROFOTO y acceso para vehículos.',
   metadataBase: new URL('https://syxestudio.es'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://syxestudio.es',
-    siteName: 'SYX Estudio - Plató Audiovisual Madrid',
-    images: [{
-      url: '/img/main.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'SYX Estudio - Plató Audiovisual Madrid',
-    }],
+    siteName: 'SYX Estudio',
+    images: [{ url: '/img/main.jpg', width: 1200, height: 630, alt: 'SYX Estudio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@syxestudio',
-    site: '@syxestudio',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
 };
 

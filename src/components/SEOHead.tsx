@@ -1,200 +1,66 @@
 import { Metadata } from "next";
-import { PHONE_1_DISPLAY } from "@/lib/phone";
 
 interface SEOProps {
   title: string;
   description: string;
-  keywords?: string[];
-  image?: string;
   url?: string;
-  type?: "website" | "article";
-  locale?: string;
-  siteName?: string;
+  image?: string;
 }
 
-export function generateSEOMetadata({
-  title,
-  description,
-  keywords = [],
-  image = "/img/main.jpg",
-  url = "https://syxestudio.es",
-  type = "website",
-  locale = "es_ES",
-  siteName = "SYX Estudio - Plató Audiovisual Madrid",
-}: SEOProps): Metadata {
-  const fullTitle = title.includes("SYX Estudio")
-    ? title
-    : `${title} - SYX Estudio Madrid`;
-  const fullImageUrl = image.startsWith("http")
-    ? image
-    : `https://syxestudio.es${image}`;
-
-  const defaultKeywords = [
-    "estudio fotografico madrid",
-    "plato audiovisual",
-    "alquiler estudio madrid",
-    "estudio video madrid",
-    "vallecas",
-    "luz natural",
-    "profoto",
-    "shooting madrid",
-    "rodaje madrid",
-  ];
-
-  const allKeywords = [...defaultKeywords, ...keywords];
+export function generateSEOMetadata({ title, description, url, image }: SEOProps): Metadata {
+  const ogImage = image
+    ? image.startsWith("http") ? image : `https://syxestudio.es${image}`
+    : undefined;
 
   return {
-    title: fullTitle,
+    title,
     description,
-    keywords: allKeywords.join(", "),
-    authors: [{ name: "SYX Estudio" }],
-    creator: "SYX Estudio",
-    publisher: "SYX Estudio",
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
     openGraph: {
-      type,
-      title: fullTitle,
+      title,
       description,
-      url,
-      siteName,
-      locale,
-      images: [
-        {
-          url: fullImageUrl,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      ...(url ? { url } : {}),
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] } : {}),
     },
-    twitter: {
-      card: "summary_large_image",
-      title: fullTitle,
-      description,
-      images: [fullImageUrl],
-      creator: "@syxestudio",
-      site: "@syxestudio",
-    },
-    alternates: {
-      canonical: url,
-    },
-    other: {
-      "apple-mobile-web-app-capable": "yes",
-      "apple-mobile-web-app-status-bar-style": "default",
-      "format-detection": "telephone=yes",
-      "mobile-web-app-capable": "yes",
-      "msapplication-TileColor": "#322f32",
-      "theme-color": "#322f32",
-    },
+    ...(url ? { alternates: { canonical: url } } : {}),
   };
 }
 
-// SEO presets for common pages
 export const SEOPresets = {
   home: {
-    title: "SYX Estudio - Plató Audiovisual en Madrid, Vallecas",
-    description:
-      "Estudio de fotografía y vídeo en Madrid con 322m², luz natural controlable, material PROFOTO y acceso para vehículos. ¡Reserva tu sesión!",
-    keywords: [
-      "estudio fotografico vallecas",
-      "luz natural madrid",
-      "estudio net zero",
-      "camerino madrid",
-      "acceso vehiculos",
-    ],
+    title: "SYX Estudio — Plató audiovisual en Madrid",
+    description: "Estudio de fotografía y vídeo de 322 m² en Vallecas, Madrid. Luz natural controlable, iluminación PROFOTO y acceso para vehículos.",
     url: "https://syxestudio.es",
+    image: "/img/main.jpg",
   },
   estudio1: {
-    title: "El Estudio - Instalaciones y Galería - SYX Estudio Madrid",
-    description:
-      "Descubre nuestro estudio audiovisual de 322 m² en Vallecas, Madrid. Características técnicas, instalaciones PROFOTO y galería completa.",
-    keywords: [
-      "estudio audiovisual madrid",
-      "322 metros cuadrados",
-      "7 metros altura",
-      "instalaciones profoto",
-      "fondos pintados",
-      "camerino profesional",
-      "cocina estudio",
-      "pmr accesible",
-      "energia renovable",
-      "sostenible",
-    ],
-    url: "https://syxestudio.es/el-estudio/",
+    title: "El Estudio",
+    description: "322 m² diáfanos con 7 metros de altura, luz natural controlable y equipamiento PROFOTO en Vallecas, Madrid.",
+    url: "https://syxestudio.es/el-estudio",
     image: "/img/_SX_5180-1__msi___jpg.jpg",
   },
   produccion: {
-    title: "Servicios de Producción - Fotografía, Vídeo y Eventos",
-    description:
-      "Servicios completos de producción audiovisual: shootings de fotografía, rodajes de vídeo y eventos corporativos en nuestro estudio de Madrid.",
-    keywords: [
-      "produccion audiovisual",
-      "shootings profesionales",
-      "rodajes madrid",
-      "eventos corporativos",
-      "direccion creativa",
-    ],
-    url: "https://syxestudio.es/atrezzo/",
+    title: "Servicios de producción",
+    description: "Shootings de fotografía, rodajes de vídeo y eventos corporativos en nuestro estudio de Madrid.",
+    url: "https://syxestudio.es/servicios",
   },
   alquiler: {
-    title: "Alquiler de Material Audiovisual - Equipos Profesionales",
-    description:
-      "Alquiler de material audiovisual profesional: cámaras, iluminación PROFOTO, trípodes y equipos técnicos para tus proyectos.",
-    keywords: [
-      "alquiler material audiovisual",
-      "camaras profesionales",
-      "iluminacion profoto",
-      "tripodes",
-      "equipos tecnicos",
-    ],
-    url: "https://syxestudio.es/alquiler-de-material/",
+    title: "Alquiler de material audiovisual",
+    description: "Equipos profesionales de iluminación PROFOTO, cámaras y accesorios disponibles en SYX Estudio.",
+    url: "https://syxestudio.es/alquiler-de-material",
   },
   fondos: {
-    title: "Fondos de Fotografía - Colores y Texturas Profesionales",
-    description:
-      "Amplia selección de fondos pintados profesionales para fotografía: colores sólidos, texturas y acabados especiales para tus proyectos.",
-    keywords: [
-      "fondos pintados",
-      "fondos fotografia",
-      "colores solidos",
-      "texturas profesionales",
-      "cyclorama",
-    ],
-    url: "https://syxestudio.es/fondos/",
+    title: "Fondos de fotografía",
+    description: "Fondos pintados a mano en distintos colores y acabados para tus proyectos fotográficos.",
+    url: "https://syxestudio.es/fondos",
   },
   contacto: {
-    title: "Contacto y Reservas - SYX Estudio Madrid",
-    description:
-      `Contacta con SYX Estudio para reservar tu sesión. Teléfono: ${PHONE_1_DISPLAY}. C/ Vizconde de Arlessón, 21, Madrid.`,
-    keywords: [
-      "reservas estudio madrid",
-      "contacto syx estudio",
-      "telefono reservas",
-      "direccion estudio",
-    ],
-    url: "https://syxestudio.es/contacto/",
+    title: "Contacto y reservas",
+    description: "Contacta con SYX Estudio para reservar el espacio o pedir información.",
+    url: "https://syxestudio.es/contacto",
   },
   sostenibilidad: {
-    title: "Sostenibilidad - Estudio NET ZERO con Energía Renovable",
-    description:
-      "SYX Estudio es un estudio NET ZERO que funciona con energía 100% renovable gracias a nuestras placas fotovoltaicas.",
-    keywords: [
-      "estudio net zero",
-      "energia renovable",
-      "placas fotovoltaicas",
-      "sostenibilidad",
-      "estudio ecologico",
-    ],
-    url: "https://syxestudio.es/sostenibilidad/",
+    title: "Sostenibilidad",
+    description: "SYX Estudio funciona con energía 100% renovable mediante placas fotovoltaicas — estudio NET ZERO.",
+    url: "https://syxestudio.es/sostenibilidad",
   },
 };
