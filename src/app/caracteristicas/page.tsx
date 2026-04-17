@@ -51,12 +51,13 @@ export default function Caracteristicas() {
       </div>
 
       {/* Plano / imagen técnica */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-50">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-4 bg-gray-50">
         <Image
           src="/img/caracteristicas__msi___jpg.jpg"
           alt="Plano y características del estudio SYX"
-          fill
-          className="object-contain"
+          width={1600}
+          height={900}
+          className="w-full h-auto"
           sizes="100vw"
         />
       </div>
