@@ -108,7 +108,9 @@ export default function Header() {
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
-          className="fixed top-16 left-0 right-0 bottom-0 z-[9998] bg-white flex flex-col overflow-hidden"
+          className={`fixed top-16 left-0 right-0 bottom-0 z-[9998] flex flex-col overflow-hidden ${
+            isHome ? "bg-primary" : "bg-white"
+          }`}
           style={{
             paddingBottom: "max(16px, env(safe-area-inset-bottom))",
           }}
@@ -118,7 +120,11 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary"
+                className={`block px-3 py-3 text-base font-medium ${
+                  isHome
+                    ? "text-white hover:text-cta"
+                    : "text-gray-700 hover:text-primary"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
