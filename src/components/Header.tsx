@@ -109,7 +109,7 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
           className={`fixed top-16 left-0 right-0 bottom-0 z-[9998] flex flex-col overflow-hidden ${
-            isHome ? "bg-primary" : "bg-white"
+            isHome ? "bg-[#0f0e0f]" : "bg-white"
           }`}
           style={{
             paddingBottom: "max(16px, env(safe-area-inset-bottom))",
