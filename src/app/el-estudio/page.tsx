@@ -1,6 +1,6 @@
 import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
-import EstudioGallery from "@/components/EstudioGallery";
+import EditorialGallery from "@/components/EditorialGallery";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface EstudioData {
@@ -31,17 +31,18 @@ export default function ElEstudio() {
     "Luz natural controlable",
     "Acceso vehículos",
     "Vallecas, Madrid",
-    "NET ZERO",
+    "Responsable con el medio ambiente",
+    "Adaptado a movilidad reducida",
   ];
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Cabecera mínima */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10">
+        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-3">
           SYX Estudio
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-6">
+        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-2">
           El Estudio
         </h1>
         <p className="text-lg text-gray-500 max-w-xl">
@@ -49,8 +50,8 @@ export default function ElEstudio() {
         </p>
       </div>
 
-      {/* Galería a ancho completo */}
-      <EstudioGallery images={estudio.gallery} />
+      {/* Galería editorial a ancho completo */}
+      <EditorialGallery images={estudio.gallery} />
 
       {/* Specs y CTA */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

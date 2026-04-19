@@ -38,29 +38,14 @@ export const SEOPresets = {
     url: "https://syxestudio.es/el-estudio",
     image: "/img/_SX_5180-1__msi___jpg.jpg",
   },
-  produccion: {
-    title: "Servicios de producción",
-    description: "Shootings de fotografía, rodajes de vídeo y eventos corporativos en nuestro estudio de Madrid.",
-    url: "https://syxestudio.es/servicios",
-  },
-  alquiler: {
-    title: "Alquiler de material audiovisual",
-    description: "Equipos profesionales de iluminación PROFOTO, cámaras y accesorios disponibles en SYX Estudio.",
-    url: "https://syxestudio.es/alquiler-de-material",
-  },
-  fondos: {
-    title: "Fondos de fotografía",
-    description: "Fondos pintados a mano en distintos colores y acabados para tus proyectos fotográficos.",
-    url: "https://syxestudio.es/fondos",
+  caracteristicas: {
+    title: "Características",
+    description: "Especificaciones técnicas e instalaciones del espacio SYX Estudio en Vallecas, Madrid.",
+    url: "https://syxestudio.es/caracteristicas",
   },
   contacto: {
     title: "Contacto y reservas",
     description: "Contacta con SYX Estudio para reservar el espacio o pedir información.",
     url: "https://syxestudio.es/contacto",
-  },
-  sostenibilidad: {
-    title: "Sostenibilidad",
-    description: "SYX Estudio funciona con energía 100% renovable mediante placas fotovoltaicas — estudio NET ZERO.",
-    url: "https://syxestudio.es/sostenibilidad",
   },
 };

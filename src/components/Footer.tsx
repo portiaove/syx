@@ -142,10 +142,18 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/sostenibilidad"
+                    href="/caracteristicas"
                     className="text-gray-300 hover:text-white"
                   >
-                    Sostenibilidad
+                    Características
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contacto"
+                    className="text-gray-300 hover:text-white"
+                  >
+                    Contacto
                   </Link>
                 </li>
               </ul>

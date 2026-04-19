@@ -22,9 +22,7 @@ function useBodyScrollLock(locked: boolean) {
 
 const navLinks = [
   { href: "/el-estudio", label: "EL ESTUDIO" },
-  { href: "/servicios", label: "SERVICIOS" },
   { href: "/caracteristicas", label: "CARACTERÍSTICAS" },
-  { href: "/about", label: "ABOUT" },
   { href: "/contacto", label: "CONTACTO" },
 ];
 

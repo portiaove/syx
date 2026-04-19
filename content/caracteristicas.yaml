@@ -1,23 +1,20 @@
 location:
-  description: "Entrevías, Vallecas, a 15 minutos del centro; buen acceso en transporte público"
+  description: "Madrid, Vallecas, a 15 minutos del centro; buen acceso en transporte público"
 
 space:
   total_m2: 322
   studio1_m2: 155
+  office_m2: 55
   max_height_m: 7
 
 entry_for_vehicles: true
 
 installations:
-  - "Iluminación PROFOTO"
-  - "Fondos de tela pintados"
   - "Cocina completa"
   - "Camerino amplio"
-  - "Accesible PMR"
-
-sustainability:
-  - "Autoconsumo con placas fotovoltaicas"
-  - "Prácticas NET ZERO"
+  - "Accesible ♿"
+  - "Diagrama unifilar"
+  - "Autoconsumo con placas fotovoltaicas y política de sostenibilidad"
 
 cta:
   label: "¡Claro que Syx!"

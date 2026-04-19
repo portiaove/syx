@@ -8,6 +8,7 @@ interface CaracteristicasData {
   space: {
     total_m2: number;
     studio1_m2: number;
+    office_m2: number;
     max_height_m: number;
   };
   location: {
@@ -15,14 +16,13 @@ interface CaracteristicasData {
   };
   entry_for_vehicles: boolean;
   installations: string[];
-  sustainability: string[];
   cta: {
     label: string;
     href: string;
   };
 }
 
-export const metadata = generateSEOMetadata(SEOPresets.estudio1);
+export const metadata = generateSEOMetadata(SEOPresets.caracteristicas);
 
 export default function Caracteristicas() {
   const data = getContentData("caracteristicas") as CaracteristicasData;
@@ -30,19 +30,20 @@ export default function Caracteristicas() {
   const specs = [
     { label: "Superficie total", value: `${data.space.total_m2} m²` },
     { label: "Estudio", value: `${data.space.studio1_m2} m²` },
+    { label: "Oficina", value: `${data.space.office_m2} m²` },
     { label: "Altura máxima", value: `${data.space.max_height_m} m` },
     { label: "Acceso vehículos", value: data.entry_for_vehicles ? "Sí" : "No" },
     { label: "Ubicación", value: data.location.description },
   ];
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Cabecera */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10">
+        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-3">
           SYX Estudio
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-6">
+        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-2">
           Características
         </h1>
         <p className="text-lg text-gray-500 max-w-xl">
@@ -50,15 +51,34 @@ export default function Caracteristicas() {
         </p>
       </div>
 
-      {/* Plano / imagen técnica */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-4 bg-gray-50">
+      {/* Plano — móvil: vertical pantalla completa; desktop: rotada 90° para mostrar horizontal */}
+      <div className="relative h-screen md:hidden">
         <Image
           src="/img/caracteristicas__msi___jpg.jpg"
           alt="Plano y características del estudio SYX"
-          width={1600}
-          height={900}
-          className="w-full h-auto"
+          fill
+          className="object-cover"
           sizes="100vw"
+          priority
+        />
+      </div>
+      <div
+        className="hidden md:block w-full overflow-hidden relative"
+        style={{ height: "56.25vw" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/img/caracteristicas__msi___jpg.jpg"
+          alt="Plano y características del estudio SYX"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            height: "100vw",
+            width: "auto",
+            maxWidth: "none",
+            transform: "translate(-50%, -50%) rotate(90deg)",
+          }}
         />
       </div>
 
@@ -77,31 +97,17 @@ export default function Caracteristicas() {
           ))}
         </div>
 
-        {/* Instalaciones */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
-          <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
-              Instalaciones
-            </p>
-            <div className="space-y-3">
-              {data.installations.map((item, i) => (
-                <p key={i} className="text-xl text-primary">
-                  {item}
-                </p>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
-              Sostenibilidad
-            </p>
-            <div className="space-y-3">
-              {data.sustainability.map((item, i) => (
-                <p key={i} className="text-xl text-primary">
-                  {item}
-                </p>
-              ))}
-            </div>
+        {/* Instalaciones — centradas */}
+        <div className="text-center mb-16">
+          <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
+            Instalaciones
+          </p>
+          <div className="space-y-3">
+            {data.installations.map((item, i) => (
+              <p key={i} className="text-xl text-primary">
+                {item}
+              </p>
+            ))}
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-black/30" />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.2em] uppercase drop-shadow-2xl">
+        <h1 className="text-cta text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.2em] uppercase drop-shadow-2xl">
           syx estudio
         </h1>
       </div>

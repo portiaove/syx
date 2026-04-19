@@ -21,7 +21,7 @@ interface FondosData {
   types: string[];
 }
 
-export const metadata = generateSEOMetadata(SEOPresets.alquiler);
+export const metadata = generateSEOMetadata(SEOPresets.estudio1);
 
 export default function Servicios() {
   const alquiler = getExtrasContentData("alquiler-material") as AlquilerData;
@@ -29,13 +29,13 @@ export default function Servicios() {
   const fondos = getExtrasContentData("fondos") as FondosData;
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Cabecera */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10">
+        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-3">
           SYX Estudio
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-6">
+        <h1 className="text-5xl md:text-7xl font-bold text-primary leading-none mb-2">
           Servicios
         </h1>
         <p className="text-lg text-gray-500 max-w-xl">
