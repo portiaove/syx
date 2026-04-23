@@ -51,34 +51,32 @@ export default function Caracteristicas() {
         </p>
       </div>
 
-      {/* Plano — móvil: vertical pantalla completa; desktop: rotada 90° para mostrar horizontal */}
-      <div className="relative h-screen md:hidden">
-        <Image
-          src="/img/caracteristicas__msi___jpg.jpg"
-          alt="Plano y características del estudio SYX"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-      </div>
-      <div
-        className="hidden md:block w-full overflow-hidden relative"
-        style={{ height: "56.25vw" }}
-      >
+      {/* Plano — móvil: rotada 90° para mostrar horizontal; desktop: normal */}
+      <div className="relative h-screen overflow-hidden md:hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/img/caracteristicas__msi___jpg.jpg"
+          src="/img/plano.webp"
           alt="Plano y características del estudio SYX"
           style={{
             position: "absolute",
             left: "50%",
             top: "50%",
-            height: "100vw",
-            width: "auto",
+            width: "100vh",
+            height: "auto",
             maxWidth: "none",
             transform: "translate(-50%, -50%) rotate(90deg)",
           }}
+        />
+      </div>
+      <div className="hidden md:block w-full">
+        <Image
+          src="/img/plano.webp"
+          alt="Plano y características del estudio SYX"
+          width={1681}
+          height={862}
+          className="w-full h-auto"
+          sizes="100vw"
+          priority
         />
       </div>
 
@@ -115,10 +113,10 @@ export default function Caracteristicas() {
       {/* Galería extra del espacio */}
       <EstudioGallery
         images={[
-          "/img/estudio1/_SX_4150-1__msi___jpg.jpg",
-          "/img/estudio1/_SX_5258-1__msi___jpg.jpg",
-          "/img/estudio1/_SX_5248-1__msi___jpg.jpg",
-          "/img/estudio1/_SX_4127-1__msi___jpg.jpg",
+          "/img/estudio1/_SX_6598.webp",
+          "/img/estudio1/_SX_6577.webp",
+          "/img/estudio1/_SX_6568.webp",
+          "/img/estudio1/_SX_6550.webp",
         ]}
       />
 
