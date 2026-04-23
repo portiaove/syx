@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 
-const inter = Inter({
-  subsets: ["latin"],
+const glypha = localFont({
+  src: [
+    { path: "../fonts/glypha/GlyphaLTPro35Thin.ttf",    weight: "100", style: "normal" },
+    { path: "../fonts/glypha/GlyphaLTPro35ThinObl.ttf", weight: "100", style: "italic" },
+    { path: "../fonts/glypha/GlyphaLTPro45Light.ttf",   weight: "300", style: "normal" },
+    { path: "../fonts/glypha/GlyphaLTPro45LtObl.ttf",   weight: "300", style: "italic" },
+    { path: "../fonts/glypha/GlyphaLTPro55Rg.ttf",      weight: "400", style: "normal" },
+    { path: "../fonts/glypha/GlyphaLTPro55Obl.ttf",     weight: "400", style: "italic" },
+    { path: "../fonts/glypha/GlyphaLTPro65Bold.ttf",    weight: "700", style: "normal" },
+    { path: "../fonts/glypha/GlyphaLTPro65BoldObl.ttf", weight: "700", style: "italic" },
+    { path: "../fonts/glypha/GlyphaLTPro75Black.ttf",   weight: "900", style: "normal" },
+    { path: "../fonts/glypha/GlyphaLTPro75BlackObl.ttf",weight: "900", style: "italic" },
+  ],
+  variable: "--font-glypha",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +56,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#322f32" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${glypha.variable} font-sans antialiased`}>
         <Header />
         <main>{children}</main>
       </body>
