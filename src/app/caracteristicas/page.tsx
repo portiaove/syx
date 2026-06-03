@@ -2,6 +2,7 @@ import { getContentData } from "@/lib/content";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import EstudioGallery from "@/components/EstudioGallery";
+import LogosFooter from "@/components/LogosFooter";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface CaracteristicasData {
@@ -127,6 +128,8 @@ export default function Caracteristicas() {
           className="text-lg px-8 py-4"
         />
       </div>
+
+      <LogosFooter />
     </div>
   );
 }

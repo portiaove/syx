@@ -1,4 +1,5 @@
 import { getContentData } from "@/lib/content";
+import LogosFooter from "@/components/LogosFooter";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 import {
   PHONE_1_DISPLAY,
@@ -178,6 +179,8 @@ export default function Contacto() {
 
         </div>
       </div>
+
+      <LogosFooter />
     </div>
   );
 }

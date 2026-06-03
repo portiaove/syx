@@ -1,6 +1,7 @@
 import { getContentData } from "@/lib/content";
 import CTAButton from "@/components/CTAButton";
 import EditorialGallery from "@/components/EditorialGallery";
+import LogosFooter from "@/components/LogosFooter";
 import { generateSEOMetadata, SEOPresets } from "@/components/SEOHead";
 
 interface EstudioData {
@@ -68,6 +69,8 @@ export default function ElEstudio() {
           className="text-lg px-8 py-4"
         />
       </div>
+
+      <LogosFooter />
     </div>
   );
 }
