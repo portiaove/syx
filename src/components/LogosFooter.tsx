@@ -1,9 +1,24 @@
 import Image from "next/image";
 
 const logos = [
-  { src: "/img/logos/logo-color.png", alt: "SYX Estudio", width: 1280, height: 720 },
-  { src: "/img/logos/comunidad-madrid.jpg", alt: "Comunidad de Madrid", width: 850, height: 450 },
-  { src: "/img/logos/funded-by-eu.png", alt: "Financiado por la Unión Europea", width: 1280, height: 311 },
+  {
+    src: "/img/logos/funded-by-eu.png",
+    alt: "Financiado por la Unión Europea",
+    width: 1280,
+    height: 311,
+  },
+  {
+    src: "/img/logos/logo-color.png",
+    alt: "SYX Estudio",
+    width: 1280,
+    height: 720,
+  },
+  {
+    src: "/img/logos/comunidad-madrid.jpg",
+    alt: "Comunidad de Madrid",
+    width: 850,
+    height: 450,
+  },
 ];
 
 export default function LogosFooter() {
@@ -18,7 +33,7 @@ export default function LogosFooter() {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className="h-12 w-auto object-contain md:h-14"
+              className="h-16 w-auto object-contain md:h-20"
             />
           ))}
         </div>
