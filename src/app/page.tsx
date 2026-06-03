@@ -4,7 +4,7 @@ export const metadata = generateSEOMetadata(SEOPresets.home);
 
 export default function Home() {
   return (
-    <div className="fixed inset-0 overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden">
       <video
         autoPlay
         muted

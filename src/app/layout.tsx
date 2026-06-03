@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
+import LogosFooter from "@/components/LogosFooter";
 
 const glypha = localFont({
   src: [
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body className={`${glypha.variable} font-sans antialiased`}>
         <Header />
         <main>{children}</main>
+        <LogosFooter />
       </body>
     </html>
   );
