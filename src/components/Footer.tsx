@@ -134,7 +134,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/el-estudio"
+                    href="/el-estudio/"
                     className="text-gray-300 hover:text-white"
                   >
                     El Estudio
@@ -142,7 +142,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/caracteristicas"
+                    href="/caracteristicas/"
                     className="text-gray-300 hover:text-white"
                   >
                     Características
@@ -150,7 +150,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/contacto"
+                    href="/contacto/"
                     className="text-gray-300 hover:text-white"
                   >
                     Contacto
@@ -164,7 +164,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/aviso-legal"
+                    href="/aviso-legal/"
                     className="text-gray-300 hover:text-white"
                   >
                     Aviso Legal
@@ -172,7 +172,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/politica-de-privacidad"
+                    href="/politica-de-privacidad/"
                     className="text-gray-300 hover:text-white"
                   >
                     Política de Privacidad
@@ -180,7 +180,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/politica-de-cookies"
+                    href="/politica-de-cookies/"
                     className="text-gray-300 hover:text-white"
                   >
                     Política de Cookies
@@ -188,7 +188,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/declaracion-de-accesibilidad"
+                    href="/declaracion-de-accesibilidad/"
                     className="text-gray-300 hover:text-white"
                   >
                     Declaración de Accesibilidad
