@@ -7,7 +7,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/'],
+      // /gracias/ solo tiene sentido tras enviar el formulario; que no compita
+      // en los resultados. El resto se rastrea, rastreadores de IA incluidos.
+      disallow: ['/gracias/'],
     },
     sitemap: 'https://syxestudio.es/sitemap.xml',
   };

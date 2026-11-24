@@ -16,6 +16,12 @@ interface CaracteristicasData {
   };
   entry_for_vehicles: boolean;
   installations: string[];
+  equipment: string[];
+  backdrops: {
+    description: string;
+    types: string[];
+    gallery: string[];
+  };
   cta: {
     label: string;
     href: string;
@@ -97,11 +103,25 @@ export default function Caracteristicas() {
 
         {/* Instalaciones — centradas */}
         <div className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
+          <h2 className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
             Instalaciones
-          </p>
+          </h2>
           <div className="space-y-3">
             {data.installations.map((item, i) => (
+              <p key={i} className="text-xl text-primary">
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* Equipamiento incluido */}
+        <div className="text-center">
+          <h2 className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
+            Equipamiento incluido
+          </h2>
+          <div className="space-y-3">
+            {data.equipment.map((item, i) => (
               <p key={i} className="text-xl text-primary">
                 {item}
               </p>
@@ -119,6 +139,29 @@ export default function Caracteristicas() {
           "/img/estudio1/_SX_6550.webp",
         ]}
       />
+
+      {/* Fondos pintados a mano */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        <h2 className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-6">
+          Fondos pintados
+        </h2>
+        <p className="text-lg text-gray-500 max-w-xl mb-8">
+          {data.backdrops.description}
+        </p>
+      </div>
+      <EstudioGallery images={data.backdrops.gallery} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="flex flex-wrap gap-3">
+          {data.backdrops.types.map((type, i) => (
+            <span
+              key={i}
+              className="text-sm text-gray-400 border border-gray-200 px-3 py-1"
+            >
+              {type}
+            </span>
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <CTAButton
