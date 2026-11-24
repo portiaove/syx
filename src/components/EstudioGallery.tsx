@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
+import { PhotoView } from "react-photo-view";
+import PhotoViewer from "@/components/PhotoViewer";
 
 export default function EstudioGallery({ images }: { images: string[] }) {
   return (
-    <PhotoProvider>
+    <PhotoViewer>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {images.map((src, i) => (
           <PhotoView key={i} src={src}>
@@ -22,6 +22,6 @@ export default function EstudioGallery({ images }: { images: string[] }) {
           </PhotoView>
         ))}
       </div>
-    </PhotoProvider>
+    </PhotoViewer>
   );
 }
