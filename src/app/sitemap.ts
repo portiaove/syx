@@ -1,88 +1,50 @@
 import { MetadataRoute } from "next";
+import { readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://syxestudio.es";
+const BASE = "https://syxestudio.es";
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/estudio`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/caracteristicas`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/alquiler-de-material`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/produccion`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/fondos-de-fotografia`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contacto`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/sostenibilidad`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/aviso-legal`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/politica-de-privacidad`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/politica-de-cookies`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/declaracion-de-accesibilidad`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
+// Rutas que existen pero no deben indexarse.
+const EXCLUDE = new Set(["gracias"]);
+
+const PRIORITY: Record<string, number> = {
+  "": 1.0,
+  "el-estudio": 0.9,
+  caracteristicas: 0.8,
+  contacto: 0.8,
+};
+
+// Se lee del disco en lugar de mantener la lista a mano: así el sitemap
+// no puede volver a quedar apuntando a rutas que ya no existen.
+function discoverRoutes(): string[] {
+  const appDir = join(process.cwd(), "src", "app");
+
+  const dirs = readdirSync(appDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .filter((name) => !name.startsWith("_") && !name.startsWith("(") && !EXCLUDE.has(name))
+    .filter((name) => {
+      try {
+        return statSync(join(appDir, name, "page.tsx")).isFile();
+      } catch {
+        return false;
+      }
+    })
+    .sort();
+
+  return ["", ...dirs];
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
+  return discoverRoutes().map((route) => ({
+    // trailingSlash: true está activo, así que la URL canónica lleva barra final.
+    url: route === "" ? `${BASE}/` : `${BASE}/${route}/`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: PRIORITY[route] ?? 0.3,
+  }));
 }
