@@ -59,10 +59,15 @@ export default function Caracteristicas() {
 
       {/* Plano — móvil: rotada 90° para mostrar horizontal; desktop: normal */}
       <div className="relative h-screen overflow-hidden md:hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* Usa next/image igual que la variante de escritorio: con un <img>
+            crudo el plano se descargaba sin optimizar y, al estar las dos
+            variantes en el DOM, acababa bajándose dos veces por visita. */}
+        <Image
           src="/img/plano.webp"
           alt="Plano y características del estudio SYX"
+          width={1681}
+          height={862}
+          sizes="100vh"
           style={{
             position: "absolute",
             left: "50%",
