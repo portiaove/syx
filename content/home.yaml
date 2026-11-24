@@ -3,7 +3,7 @@ hero:
   subtitle: "Plató con luz natural controlable para foto y vídeo"
   cta:
     label: "¡Claro que Syx!"
-    href: "/contacto"
+    href: "/contacto/"
 
 benefits:
   - "Espacio amplio y adaptable con entrada para vehículos"
