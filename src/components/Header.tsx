@@ -20,11 +20,18 @@ function useBodyScrollLock(locked: boolean) {
   }, [locked]);
 }
 
+// Con trailingSlash: true la ruta real de cada página lleva barra final. Sin
+// ella el router no encuentra el payload de navegación y Next se rinde a una
+// recarga completa del documento, que es lo que daba la sensación de
+// trompicones al pulsar el menú.
 const navLinks = [
-  { href: "/el-estudio", label: "EL ESTUDIO" },
-  { href: "/caracteristicas", label: "CARACTERÍSTICAS" },
-  { href: "/contacto", label: "CONTACTO" },
+  { href: "/el-estudio/", label: "EL ESTUDIO" },
+  { href: "/caracteristicas/", label: "CARACTERÍSTICAS" },
+  { href: "/contacto/", label: "CONTACTO" },
 ];
+
+const withTrailingSlash = (path: string) =>
+  path.endsWith("/") ? path : `${path}/`;
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,13 +40,31 @@ export default function Header() {
 
   useBodyScrollLock(isMenuOpen);
 
+  // El menú se cierra cuando la navegación se confirma, no al pulsar. Cerrarlo
+  // en el onClick lo hacía desaparecer antes de que la página cambiara, y el
+  // hueco entre ambas cosas se notaba. Además así se cierra solo al volver
+  // atrás con el navegador.
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Pulsar el enlace de la página en la que ya estás no cambia el pathname, de
+  // modo que el efecto no salta y ese caso hay que cerrarlo a mano.
+  const closeIfCurrentRoute = (href: string) => {
+    if (withTrailingSlash(href) === withTrailingSlash(pathname)) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <>
+      {/* La cabecera va fixed en todas las páginas: si alterna entre fixed y
+          relative según la ruta, cambia de modo de posicionamiento en cada
+          navegación. En la home flota sobre el vídeo y en el resto se apoya
+          sobre fondo blanco. */}
       <header
-        className={`z-[9999] ${
-          isHome
-            ? "fixed top-0 left-0 right-0 bg-transparent"
-            : "bg-white relative"
+        className={`z-[9999] fixed top-0 left-0 right-0 ${
+          isHome ? "bg-transparent" : "bg-white"
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +73,7 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Link
                 href="/"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => closeIfCurrentRoute("/")}
                 className={`text-2xl font-bold ${
                   isHome ? "text-white" : "text-primary"
                 }`}
@@ -102,6 +127,10 @@ export default function Header() {
         </nav>
       </header>
 
+      {/* La home arranca con un hero a pantalla completa por debajo de la
+          cabecera; el resto de páginas necesitan que se les reserve el hueco. */}
+      {!isHome && <div className="h-16" aria-hidden="true" />}
+
       {/* Menú móvil */}
       {isMenuOpen && (
         <div
@@ -125,7 +154,7 @@ export default function Header() {
                     ? "text-white hover:text-cta"
                     : "text-gray-700 hover:text-primary"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => closeIfCurrentRoute(link.href)}
               >
                 {link.label}
               </Link>
