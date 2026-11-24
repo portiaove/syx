@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import LogosFooter from "@/components/LogosFooter";
+import { buildEstudioJsonLd } from "@/lib/structured-data";
 
 const glypha = localFont({
   src: [
@@ -44,6 +45,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const estudioJsonLd = buildEstudioJsonLd();
+
   return (
     <html lang="es">
       <head>
@@ -58,6 +61,10 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#322f32" />
       </head>
       <body className={`${glypha.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(estudioJsonLd) }}
+        />
         <Header />
         <main>{children}</main>
         <LogosFooter />
