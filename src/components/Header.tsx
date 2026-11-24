@@ -1,24 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-
-function useBodyScrollLock(locked: boolean) {
-  useEffect(() => {
-    const { body, documentElement: html } = document;
-    if (locked) {
-      const prevBody = body.style.overflow;
-      const prevHtml = html.style.overflow;
-      body.style.overflow = "hidden";
-      html.style.overflow = "hidden";
-      return () => {
-        body.style.overflow = prevBody;
-        html.style.overflow = prevHtml;
-      };
-    }
-  }, [locked]);
-}
+import { useOverlay } from "@/lib/overlay";
 
 // Con trailingSlash: true la ruta real de cada página lleva barra final. Sin
 // ella el router no encuentra el payload de navegación y Next se rinde a una
@@ -38,15 +23,42 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-  useBodyScrollLock(isMenuOpen);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+
+  // El menú es una capa como el visor: bloquea el scroll de la página mientras
+  // está abierto y vive en el historial, de modo que el gesto de atrás lo
+  // cierra en vez de sacarte de la página. Ver src/lib/overlay.ts.
+  useOverlay(isMenuOpen, closeMenu);
 
   // El menú se cierra cuando la navegación se confirma, no al pulsar. Cerrarlo
   // en el onClick lo hacía desaparecer antes de que la página cambiara, y el
-  // hueco entre ambas cosas se notaba. Además así se cierra solo al volver
-  // atrás con el navegador.
+  // hueco entre ambas cosas se notaba.
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const alPulsarTecla = (evento: KeyboardEvent) => {
+      if (evento.key === "Escape") setIsMenuOpen(false);
+    };
+
+    // El panel solo se pinta en móvil. Si la ventana cruza a escritorio con el
+    // menú abierto, desaparecería de la vista dejando el estado en abierto y
+    // la página sin scroll, sin nada visible que cerrar.
+    const escritorio = window.matchMedia("(min-width: 768px)");
+    const alCambiarElAncho = () => {
+      if (escritorio.matches) setIsMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", alPulsarTecla);
+    escritorio.addEventListener("change", alCambiarElAncho);
+    return () => {
+      window.removeEventListener("keydown", alPulsarTecla);
+      escritorio.removeEventListener("change", alCambiarElAncho);
+    };
+  }, [isMenuOpen]);
 
   // Pulsar el enlace de la página en la que ya estás no cambia el pathname, de
   // modo que el efecto no salta y ese caso hay que cerrarlo a mano.
@@ -61,10 +73,19 @@ export default function Header() {
       {/* La cabecera va fixed en todas las páginas: si alterna entre fixed y
           relative según la ruta, cambia de modo de posicionamiento en cada
           navegación. En la home flota sobre el vídeo y en el resto se apoya
-          sobre fondo blanco. */}
+          sobre fondo blanco.
+
+          El z-index es bajo a propósito. La cabecera es parte de la página, no
+          una capa por encima de todo: estaba en 9999 y se colaba sobre el
+          visor de fotos, que la librería monta en 2000. Desde ahí se podía
+          abrir el menú encima de una foto a pantalla completa. */}
       <header
-        className={`z-[9999] fixed top-0 left-0 right-0 ${
-          isHome ? "bg-transparent" : "bg-white"
+        className={`z-50 fixed top-0 left-0 right-0 transition-colors duration-200 motion-reduce:transition-none ${
+          isHome
+            ? isMenuOpen
+              ? "bg-[#0f0e0f]"
+              : "bg-transparent"
+            : "bg-white"
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,37 +152,48 @@ export default function Header() {
           cabecera; el resto de páginas necesitan que se les reserve el hueco. */}
       {!isHome && <div className="h-16" aria-hidden="true" />}
 
-      {/* Menú móvil */}
-      {isMenuOpen && (
-        <div
-          id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          className={`fixed top-16 left-0 right-0 bottom-0 z-[9998] flex flex-col overflow-hidden ${
-            isHome ? "bg-[#0f0e0f]" : "bg-white"
-          }`}
-          style={{
-            paddingBottom: "max(16px, env(safe-area-inset-bottom))",
-          }}
-        >
-          <div className="px-4 pt-4 pb-6 space-y-1 overflow-y-auto">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-3 py-3 text-base font-medium ${
-                  isHome
-                    ? "text-white hover:text-cta"
-                    : "text-gray-700 hover:text-primary"
-                }`}
-                onClick={() => closeIfCurrentRoute(link.href)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      {/* Menú móvil. Se pinta siempre y se oculta con clases en lugar de
+          montarse y desmontarse: así tiene transición también al cerrarse.
+          visibility entra en la transición para que la salida se vea entera y
+          para que, una vez oculto, los enlaces queden fuera del tabulador.
+
+          Se anima translate y no transform: Tailwind 4 aplica el
+          desplazamiento con la propiedad translate, de modo que nombrar
+          transform en la lista dejaba el deslizamiento sin animar. */}
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!isMenuOpen}
+        className={`md:hidden fixed top-16 left-0 right-0 bottom-0 z-40 flex flex-col overflow-hidden transition-[opacity,translate,visibility] duration-200 ease-out motion-reduce:transition-none ${
+          isHome ? "bg-[#0f0e0f]" : "bg-white"
+        } ${
+          isMenuOpen
+            ? "visible opacity-100 translate-y-0"
+            : "invisible opacity-0 -translate-y-1 pointer-events-none"
+        }`}
+        style={{
+          paddingBottom: "max(16px, env(safe-area-inset-bottom))",
+        }}
+      >
+        <div className="px-4 pt-4 pb-6 space-y-1 overflow-y-auto">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              tabIndex={isMenuOpen ? undefined : -1}
+              className={`block px-3 py-3 text-base font-medium ${
+                isHome
+                  ? "text-white hover:text-cta"
+                  : "text-gray-700 hover:text-primary"
+              }`}
+              onClick={() => closeIfCurrentRoute(link.href)}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </>
   );
 }

@@ -44,3 +44,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Mientras hay una capa abierta (el menú o el visor) la página de debajo no se
+   mueve. Va por clase y no por estilo en línea a propósito: react-photo-view
+   bloquea el scroll escribiendo body.style.overflow, y dos dueños de la misma
+   propiedad acababan pisándose. Ver src/lib/overlay.ts. */
+html.capa-abierta,
+html.capa-abierta body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}

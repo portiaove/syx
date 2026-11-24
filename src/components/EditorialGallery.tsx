@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
+import { PhotoView } from "react-photo-view";
+import PhotoViewer from "@/components/PhotoViewer";
 
 const PATTERN = [
   { spanClass: "md:col-span-2", aspect: "aspect-[4/3]",  sizes: "(max-width: 768px) 100vw, 66vw" },
@@ -21,7 +21,7 @@ const PATTERN = [
 
 export default function EditorialGallery({ images }: { images: string[] }) {
   return (
-    <PhotoProvider>
+    <PhotoViewer>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 px-2">
         {images.map((src, i) => {
           const { spanClass, aspect, sizes } = PATTERN[i % PATTERN.length];
@@ -40,6 +40,6 @@ export default function EditorialGallery({ images }: { images: string[] }) {
           );
         })}
       </div>
-    </PhotoProvider>
+    </PhotoViewer>
   );
 }
