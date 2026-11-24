@@ -36,6 +36,34 @@ tiene que estar hecho **antes** del push.
 Entre los pasos 2 y 3 los dos hosts sirven el mismo contenido durante un rato.
 Es contenido duplicado temporal y es inofensivo; un bucle de redirección no.
 
+## El patrón de la ruta: `/:path*` no vale aquí
+
+Con `trailingSlash: true`, **todas** las URL canónicas del sitio terminan en
+barra. Y `source: "/:path*"` no casa con rutas terminadas en barra, ni con la
+raíz. Resultado: la primera versión de esta redirección no se aplicaba a
+ninguna página real, aunque la condición de host sí funcionaba.
+
+Medido en producción con la regla antigua:
+
+```
+www/el-estudio   -> 308 al apex     (sin barra: casa)
+www/el-estudio/  -> 200             (con barra: NO casa)
+www/noexiste     -> 308 al apex     (sin barra: casa)
+www/noexiste/    -> 404             (con barra: NO casa)
+www/             -> 200             (raíz: NO casa)
+```
+
+Que `/noexiste` también redirigiera descarta que tenga algo que ver con que el
+fichero exista: el único discriminante es la barra final.
+
+La forma correcta es `source: "/:path(.*)"`, donde el grupo `(.*)` captura
+cualquier carácter, barras incluidas, y también la cadena vacía de la raíz. El
+ejemplo de la documentación de Vercel usa `/:path*` porque asume un proyecto
+sin `trailingSlash`.
+
+Por el mismo motivo `/servicios` y `/servicios/` necesitan **dos reglas
+separadas**: una no cubre a la otra.
+
 ## Por qué 308 y no el 307 del panel
 
 La opción "Redirect to another domain" del panel de Vercel emite siempre un 307
