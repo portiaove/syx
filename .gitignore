@@ -33,6 +33,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...salvo la plantilla, que existe justamente para documentar qué variables
+# hacen falta. Sin ella no hay forma de saber que el formulario necesita una
+# access key hasta que deja de funcionar.
+!.env.example
 
 # vercel
 .vercel
@@ -40,6 +44,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Informe interno de auditoría. Este repositorio es público y el documento
+# recoge el estado mercantil de la sociedad, tarifas publicadas por terceros
+# que no son las oficiales, y un análisis de la competencia. Nada de eso
+# debería quedar indexado en GitHub.
+docs/geo-plan.html
 
 # videos originales sin comprimir
 public/videos/SYXHOME_1.mp4
