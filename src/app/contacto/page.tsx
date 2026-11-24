@@ -6,6 +6,13 @@ import {
   WHATSAPP_URL_1,
   WHATSAPP_URL_2,
 } from "@/lib/phone";
+import {
+  CONTACT_REDIRECT_URL,
+  CONTACT_SUBJECT,
+  WEB3FORMS_ENDPOINT,
+  WEB3FORMS_KEY,
+  isContactFormEnabled,
+} from "@/lib/forms";
 
 interface ContactoData {
   heading: string;
@@ -138,7 +145,43 @@ export default function Contacto() {
             <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-8">
               Escríbenos
             </p>
-            <form action="/api/contact" method="POST" className="space-y-6">
+            {!isContactFormEnabled ? (
+              <div className="space-y-4">
+                <p className="text-lg text-gray-600">
+                  Escríbenos a{" "}
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="text-primary underline decoration-cta hover:text-cta transition-colors"
+                  >
+                    {data.email}
+                  </a>{" "}
+                  o mándanos un WhatsApp al{" "}
+                  <a
+                    href={WHATSAPP_URL_1}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline decoration-cta hover:text-cta transition-colors"
+                  >
+                    {PHONE_1_DISPLAY}
+                  </a>
+                  .
+                </p>
+              </div>
+            ) : (
+            <form action={WEB3FORMS_ENDPOINT} method="POST" className="space-y-6">
+              <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+              <input type="hidden" name="subject" value={CONTACT_SUBJECT} />
+              <input type="hidden" name="from_name" value="SYX Estudio" />
+              <input type="hidden" name="redirect" value={CONTACT_REDIRECT_URL} />
+              {/* Señuelo antispam: los bots lo rellenan, las personas no lo ven. */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                style={{ display: "none" }}
+                tabIndex={-1}
+                aria-hidden="true"
+              />
               {data.form_fields?.map((field) => (
                 <div key={field.name}>
                   <label
@@ -174,6 +217,7 @@ export default function Contacto() {
                 Enviar mensaje
               </button>
             </form>
+            )}
           </div>
 
         </div>
