@@ -38,7 +38,7 @@ export const SEOPresets = {
     title: "El Estudio",
     description: "322 m² diáfanos con 7 metros de altura, luz natural controlable y equipamiento PROFOTO en Vallecas, Madrid.",
     url: "https://syxestudio.es/el-estudio/",
-    image: "/img/_SX_5180-1__msi___jpg.jpg",
+    image: "/img/og/el-estudio.jpg",
   },
   caracteristicas: {
     title: "Características",

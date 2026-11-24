@@ -53,3 +53,6 @@ docs/geo-plan.html
 
 # videos originales sin comprimir
 public/videos/SYXHOME_1.mp4
+
+# Muestras de la comparativa de calidad de imagen (local, no se versiona)
+tmp-comparativa/
